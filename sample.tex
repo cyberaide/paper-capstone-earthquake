@@ -48,8 +48,8 @@
 %% the commands and values with those provided to you when you
 %% complete the rights form.
 \setcopyright{acmcopyright}
-\copyrightyear{2018}
-\acmYear{2018}
+\copyrightyear{2022}
+\acmYear{2022}
 \acmDOI{XXXXXXX.XXXXXXX}
 
 %% These commands are for a PROCEEDINGS abstract or paper.
@@ -100,7 +100,7 @@
 %% Of note is the shared affiliation of the first two authors, and the
 %% "authornote" and "authornotemark" commands
 %% used to denote shared contribution to the research.
-\author{Ben Trovato}
+\author{Thomas Butler}
 \authornote{Both authors contributed equally to this research.}
 \email{trovato@corporation.com}
 \orcid{1234-5678-9012}
@@ -116,13 +116,13 @@
   \postcode{43017-6221}
 }
 
-\author{Lars Th{\o}rv{\"a}ld}
+\author{Robert Knuuti}
 \affiliation{%
-  \institution{The Th{\o}rv{\"a}ld Group}
-  \streetaddress{1 Th{\o}rv{\"a}ld Circle}
-  \city{Hekla}
-  \country{Iceland}}
-\email{larst@affiliation.org}
+  \institution{University of Virginia}
+  \streetaddress{???}
+  \city{Charoletteville}
+  \country{United States}}
+\email{uqq5zz@virginia.edu}
 
 \author{Valerie B\'eranger}
 \affiliation{%
@@ -131,46 +131,21 @@
   \country{France}
 }
 
-\author{Aparna Patel}
+\author{Geoffrey C. Fox}
 \affiliation{%
- \institution{Rajiv Gandhi University}
- \streetaddress{Rono-Hills}
- \city{Doimukh}
- \state{Arunachal Pradesh}
- \country{India}}
-
-\author{Huifen Chan}
-\affiliation{%
-  \institution{Tsinghua University}
-  \streetaddress{30 Shuangqing Rd}
-  \city{Haidian Qu}
-  \state{Beijing Shi}
-  \country{China}}
-
-\author{Charles Palmer}
-\affiliation{%
-  \institution{Palmer Research Laboratories}
-  \streetaddress{8600 Datapoint Drive}
-  \city{San Antonio}
-  \state{Texas}
-  \country{USA}
-  \postcode{78229}}
-\email{cpalmer@prl.com}
-
-\author{John Smith}
-\affiliation{%
-  \institution{The Th{\o}rv{\"a}ld Group}
-  \streetaddress{1 Th{\o}rv{\"a}ld Circle}
-  \city{Hekla}
-  \country{Iceland}}
-\email{jsmith@affiliation.org}
-
-\author{Julius P. Kumquat}
-\affiliation{%
-  \institution{The Kumquat Consortium}
-  \city{New York}
+  \institution{University of Virginia}
+  \streetaddress{TBD}
+  \city{Charlotsville, VA}
   \country{USA}}
-\email{jpkumquat@consortium.net}
+\email{gcfexchange@gmail.com}
+
+\author{Gregor von Laszewski}
+\affiliation{%
+  \institution{University of Virginia}
+  \streetaddress{TBD}
+  \city{Charlotsville, VA}
+  \country{USA}}
+\email{laszewski@gmail.com}
 
 %%
 %% By default, the full list of authors will be used in the page
@@ -234,13 +209,13 @@
 %% A "teaser" image appears between the author and affiliation
 %% information and the body of the document, and typically spans the
 %% page.
-\begin{teaserfigure}
-  \includegraphics[width=\textwidth]{sampleteaser}
-  \caption{Seattle Mariners at Spring Training, 2010.}
-  \Description{Enjoying the baseball game from the third-base
-  seats. Ichiro Suzuki preparing to bat.}
-  \label{fig:teaser}
-\end{teaserfigure}
+%\begin{teaserfigure}
+%  \includegraphics[width=\textwidth]{sampleteaser}
+%  \caption{Seattle Mariners at Spring Training, 2010.}
+%  \Description{Enjoying the baseball game from the third-base
+%  seats. Ichiro Suzuki preparing to bat.}
+%  \label{fig:teaser}
+%\end{teaserfigure}
 
 %%
 %% This command processes the author and affiliation and title
@@ -248,6 +223,49 @@
 \maketitle
 
 \section{Introduction}
+
+\subsection{MLCommons}
+
+\subsection{Earthquake prediction}
+
+Things to do: 
+\begin{itemize}
+    %\item add presentation as cite,
+    \item Review IEEE Presentation \cite{fox2022aiforscience}
+    \item Review MLCommons \cite{mlcommonswebsite} 
+    \item Use jabref \cite{www-jabrefg-org} for citation management
+    \item Review Fox paper \cite{fox2021earthquake}
+    \item Frequently check github \cite{foxdengit2022}
+    \item Read up on TFT \cite{onnen2021}
+    \item Become familiar with the Attention Paper \cite{vaswani2017attention}
+    \item Learn how to selfdeploy jupyterlab \cite{jupyterlab}
+    %% Is this the same as jupytext?
+    \item Begin to learn about papermill (https://github.com/nteract/papermill)
+    %% Rivanna's core configurations might be a bit limited on this front.  They do provide multiple versions of software (such as py2.7 and py3.8), but we may need to get permission to do something in userspace if we need to be very specific on a version of python.  Do we want to look into using tox, conda, or leave this up to the container ecosystem to solve?
+    \item virtualenv on rivanna for a particular python version.
+    \item depends on Tensorflow
+    %% Below this line are objectives or targets to take the current modeling solution and mature it for other platforms / ecosystems.  Rivanna uses Lua's lmod ecosystem for jailing a process, and anaconda uses solved environments for dependencies that extend beyond just python modules.
+    \item Familiarize yourself with Rivanna's modules (https://lmod.readthedocs.org/) and conda (https://docs.conda.io/en/latest/miniconda.html) environments.
+    %% There's interest in pytorch
+    \item pytorch
+    %% This the right link? https://github.com/horovod/horovod
+    \item horovod
+    %% MLCommons project that can target a few platforms using a YAML contract.  Once we solve the target environment, we can likely target porting this way.
+    %% Also, good news is Rivanna has a Singularity module (https://mlcommons.github.io/mlcube/getting-started/) as an lmod (3.7.1), so we might be able to use that as a targeted runner without having to setup too much additional scaffolding.
+    %% And if things work right, we could use the k8s module to do local deployments if we wanted to test out alternate execution paths.
+    \item mlcube
+\end{itemize}
+
+TODO: delete the rest of paper while keeping one image and 1 cite as example.
+
+%% Pulled Rivanna details into github markdown file.
+
+
+
+
+
+\section{original intro}
+
 ACM's consolidated article template, introduced in 2017, provides a
 consistent \LaTeX\ style for use across ACM publications, and
 incorporates accessibility and metadata-extraction functionality
@@ -739,7 +757,7 @@ To Robert, for the bagels and explaining CMYK and color spaces.
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
 \bibliographystyle{ACM-Reference-Format}
-\bibliography{sample-base}
+\bibliography{references,sample-base}
 
 %%
 %% If your work has an appendix, this is the place to put it.

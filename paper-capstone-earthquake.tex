@@ -1,5 +1,5 @@
 \PassOptionsToPackage{hyphens}{url}
-\documentclass[sigplan,screen]{format/acmart}
+\documentclass[sigplan,screen]{acmart}
 \usepackage{todonotes}
 \usepackage{graphicx}
 \usepackage{wrapfig}
@@ -8,13 +8,13 @@
 \usepackage{adjustbox}
 \usepackage{makecell} 
 \usepackage{ifthen}
-\usepackage[numbers]{natbib}‎
+% \usepackage[numbers]{natbib}‎
 
-\usepackage[colorlinks = true,
-            linkcolor = blue,
-            urlcolor  = blue,
-            citecolor = blue,
-            anchorcolor = blue]{hyperref}
+%\usepackage[colorlinks = true,
+%            linkcolor = blue,
+%            urlcolor  = blue,
+%            citecolor = blue,
+%            anchorcolor = blue]{hyperref}
 
 \newcommand{\TODO}[1]{\todo[inline]{#1}}
 %\providecommand{\mlperf}{MLPerf\texttrademark{}}
@@ -23,25 +23,15 @@
 \providecommand{\mlcube}{MLCube}
 
 
-%% Not sure what's the correct copyright to set in this template...  See the below link for
-%% the allowed options in Table 3.  Would this be acmlicensed as we're retaining copyright,
-%% but are allowing ACM's usage?  Or are we publishing elsewhere and this should be none?
-%% https://www.acm.org/binaries/content/assets/publications/consolidated-tex-template/acmart.pdf#page=18
 \setcopyright{none}
-%\setcopyright{Apache 2.0}
 %\setcopyright{rightsretained}
 \copyrightyear{}
 %\acmYear{2022}
 \acmDOI{}
 
-%\acmConference[T. Buttler, R. Knuuti, J, Kolesar, G. C. Fox,
-%  G. von Laszewski, J. Fox, University of Virginia Data Science
-%  Capstone 2022]{MLCommons Earthquake Science Benchmark}{Jan. 22 --
-%  Aug. 31 2022}{Charlotsville, VA, USA}
-
-\acmConference[Data Science
-  Capstone, University of Virginia, 2022]{MLCommons Earthquake Science Benchmark}{Jan. 22 --
-  Aug. 31 2022}{Charlotsville, VA, USA}
+\acmConference[Data Science Capstone, University of Virginia,
+  2022]{MLCommons Earthquake Science Benchmark}{Jan. 22 -- Aug. 31
+  2022}{Charlotsville, VA, USA}
 
 \acmBooktitle{Woodstock '18:
   ACM Symposium on Neural Gaze Detection, June 03--05, 2018,
@@ -132,7 +122,8 @@ Town Center Four
 TBD
 \end{abstract}
 
-%% see http://dl.acm.org/ccs.cfm.
+
+
 \begin{CCSXML}
 <ccs2012>
  <concept>
@@ -169,6 +160,9 @@ TBD
 \keywords{MLCommons, Science AI Benchmark, Earthquake, Deep Learning}
 
 \maketitle
+
+\TODO{Fix the classification. See  \url{see http://dl.acm.org/ccs.cfm}} 
+
 
 \section{Introduction}
 
@@ -469,11 +463,11 @@ DGX Fox \cite{www-dgx-station-a100}
          \ref{id:anl}   & ANL    & Aurora & \cite{www-aurora}         &              &                  & & & &    ??? 2022   \\ \hline
          \ref{id:ornl}  & ORNL   & Summit &\cite{www-summit}         &        27000 & \nvidia{volta}     & & & &               \\ \hline
          \ref{id:nersc} & NERSC  & Perlmutter & \cite{www-perlmutter} &         6000 & \nvidia{A100}      & & & & Jan 2022      \\ \hline
-         \ref{id:sdsc}  & SDSC   & Expanse & \cite{www-expanse}       &          200 & \nvidid{V100}
+         \ref{id:sdsc}  & SDSC   & Expanse & \cite{www-expanse}       &          200 & \nvidia{V100}
          SMX2 & & & &               \\ \hline
          \ref{id:uva}   & UVA    & Rivanna &\cite{www-rivanna}       &            8 & \nvidia{A100}      & 80GB & ? & &  Feb 2022      \\
             &    &  &       &            8 & \nvidia{A100}      & 40GB & 8 & &       \\
-            &    &  &       &            ? & \nvidid{RTX3090}   & 24GB & ? & ? & 2021          \\
+            &    &  &       &            ? & \nvidia{RTX3090}   & 24GB & ? & ? & 2021          \\
             &    &  &       &            ? & \nvidia{K80}       & 11GB & 8 & 9 & 2021          \\
             &    &  &       &            ? & \nvidia{V100}      & 16GB & 4 & 1 & 2021          \\
             &    &  &       &            ? & \nvidia{V100}      & 32GB & 4 & 12 & 2021          \\
@@ -548,14 +542,30 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 
 \TODO{wrapfigure does somehow not work in this template}
 
-{\bf Thomas Butler}
-is a Graduate Student at University of Virginia's School of Data Science. His undergraduate degree is in Biomedical engineering. He has over eight years of experience in the Infertility field helping patients, jointly running a Andrology lab, and contributing research to advance the field through joint research on how AMH effects pregnancy outcomes and sperm antibodies effect PSA. He has a certificate in Data Analytics from Georgia Institute of Technology.
+{\bf Thomas Butler} is a Graduate Student at University of Virginia's
+School of Data Science. His undergraduate degree is in Biomedical
+engineering. He has over eight years of experience in the Infertility
+field helping patients, jointly running a Andrology lab, and
+contributing research to advance the field through joint research on
+how AMH effects pregnancy outcomes and sperm antibodies effect PSA. He
+has a certificate in Data Analytics from Georgia Institute of
+Technology.
 
-{\bf Robert Knuuti}
-is a Graduate Student at University of Virginia's School of Data Science. He has over 10 years experience in system architecture and software engineering, and specializes in Development Operations and Cloud Computing. He has constructed air gapped Continuous Integration and Continuous Delivery systems for multiple organizations each supporting more than 100 developers and has facilitated the construction of repeatable, tractable builds for users of these systems.
+{\bf Robert Knuuti} is a Graduate Student at University of Virginia's
+School of Data Science. He has over 10 years experience in system
+architecture and software engineering, and specializes in Development
+Operations and Cloud Computing. He has constructed air gapped
+Continuous Integration and Continuous Delivery systems for multiple
+organizations each supporting more than 100 developers and has
+facilitated the construction of repeatable, tractable builds for users
+of these systems.
 
-{\bf Jake Kolessar}
-{is a Graduate Student at the University of Virginia's School of Data Science. He has a background in mechanical engineering and 2 years of experience as a Modeling, Simulation & Analysis Engineer. He has supported the software design and development of modeling capabilities for event simulation products as well as the integration of models into the simulation framework.}
+{\bf Jake Kolessar} {is a Graduate Student at the University of
+  Virginia's School of Data Science. He has a background in mechanical
+  engineering and 2 years of experience as a Modeling, Simulation and
+  Analysis Engineer. He has supported the software design and
+  development of modeling capabilities for event simulation products
+  as well as the integration of models into the simulation framework.}
 
 {\bf Geoffrey C. Fox}
 \TODO{Geoffery: fill out}
@@ -565,8 +575,14 @@ is a Graduate Student at University of Virginia's School of Data Science. He has
 %\includegraphics[width=0.24\columnwidth]{images/bio/gregor.png}
 %\end{wrapfigure}
 
-{\bf Gregor von Laszewski}
-is a Research Professor at University of Virginia. He has more than 30 years of experience in parallel and distributed computing. Selected research organizations he worked in include NASA, Argonne National Laboratory, Indiana University. He is proud to have been contributing members of research teams that invented hybrid parallel genetic algorithms, Grid computing, and the first large scale academic hybrid cloud, as well as the larges scientific bibliometric analysis of XSEDE in the world.
+{\bf Gregor von Laszewski} is a Research Professor at University of
+Virginia. He has more than 30 years of experience in parallel and
+distributed computing. Selected research organizations he worked in
+include NASA, Argonne National Laboratory, Indiana University. He is
+proud to have been contributing members of research teams that
+invented hybrid parallel genetic algorithms, Grid computing, and the
+first large scale academic hybrid cloud, as well as the larges
+scientific bibliometric analysis of XSEDE in the world.
 
 
 
@@ -614,7 +630,6 @@ Things to do:
 
 
 \subsection{Generated List}
-\listoftodos{}
 
 To find a general list of todo actions, consult
 
@@ -675,7 +690,10 @@ Dates covered: Mar 24th - April 27th
 
 Due: April 28th, 2022
 
+\clearpage
 
+
+\listoftodos{}
 
 
 \end{document}

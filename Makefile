@@ -31,6 +31,7 @@ watch: ${FILE}.pdf
 clean:
 	latexmk -CA -bibtex
 	rm -f ${FILE}.run.xml
+	rm -f *.tdo
 
 dot:
 	dot -Tpdf -o images/singularity.pdf images/singularity.dot

@@ -1,3 +1,4 @@
+\PassOptionsToPackage{hyphens}{url}
 \documentclass[sigplan,screen]{format/acmart}
 \usepackage{todonotes}
 \usepackage{graphicx}
@@ -7,6 +8,13 @@
 \usepackage{adjustbox}
 \usepackage{makecell} 
 \usepackage{ifthen}
+\usepackage[numbers]{natbib}‎
+
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
 
 \newcommand{\TODO}[1]{\todo[inline]{#1}}
 %\providecommand{\mlperf}{MLPerf\texttrademark{}}
@@ -26,14 +34,23 @@
 %\acmYear{2022}
 \acmDOI{}
 
-\acmConference[T. Buttler, R. Knuuti, J, Kolesar, Geoffrey C. Fox, Gregor von Laszewski, J. Fox, University of Virginia Data Science Capstone 2022]{MLCommons Earthquake Science Benchmark}{Jan. 22 -- Aug. 31 2022}{Charlotsville, VA, US}
-\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
-  June 03--05, 2018, Woodstock, NY} 
+%\acmConference[T. Buttler, R. Knuuti, J, Kolesar, G. C. Fox,
+%  G. von Laszewski, J. Fox, University of Virginia Data Science
+%  Capstone 2022]{MLCommons Earthquake Science Benchmark}{Jan. 22 --
+%  Aug. 31 2022}{Charlotsville, VA, USA}
+
+\acmConference[Data Science
+  Capstone, University of Virginia, 2022]{MLCommons Earthquake Science Benchmark}{Jan. 22 --
+  Aug. 31 2022}{Charlotsville, VA, USA}
+
+\acmBooktitle{Woodstock '18:
+  ACM Symposium on Neural Gaze Detection, June 03--05, 2018,
+  Woodstock, NY}
+
 \acmPrice{}
 \acmISBN{}
 %%\acmSubmissionID{123-A56-BU3}
 %%\citestyle{acmauthoryear}
-
 
 \makeatletter
 \newcommand*{\addFileDependency}[1]{% argument=file name and extension
@@ -43,9 +60,8 @@
 }
 \makeatother
 \xpretocmd{\digraph}{\addFileDependency{#2.dot}}{}{}
-% Removes margin issue
-% TODO - remove this line when we're ready to submit
-\setlength{\marginparwidth}{2cm}
+
+
 \begin{document}
 
 
@@ -55,7 +71,7 @@
 \orcid{0000-0003-1515-0098}
 \affiliation{%
   \institution{University of Virginia}
-  \city{Charlotsville, VA}
+  \city{Charoletteville}
   \country{USA}}
  \email{Tommysbutler@gmail.com}
 
@@ -110,7 +126,7 @@ Town Center Four
   \country{USA}}
 \email{cwk9mp@virginia.edu}
 
-\renewcommand{\shortauthors}{Butler, Knuuti, Kolesar, Fox, von Laszewski}
+\renewcommand{\shortauthors}{Butler, Knuuti, Kolesar, G Fox, G von Laszewski}
 
 \begin{abstract}
 TBD
@@ -414,6 +430,7 @@ Rutherford Appleton Laboratory (RAL), UK
 Pearl \cite{www-pearl-1}
 
 
+
 \subsection {Nvidia DGX Workstation}
 \label{id:dgx} 
 
@@ -421,14 +438,21 @@ The NVIDIA DGX Station A100 is a commercially available product that can provide
 
 DGX Fox \cite{www-dgx-station-a100}
 
-\newcommand{\nvidia}[1]{
-    \ifthenelse{\equal{#1}{A100}}{\href{https://www.nvidia.com/en-us/data-center/a100/}{NVIDIA #1}}{} 
-    \ifthenelse{\equal{#1}{V100}}{\href{https://www.nvidia.com/en-us/data-center/a100/}{NVIDIA #1}}{}
-    \ifthenelse{\equal{#1}{K80}}{\href{https://www.nvidia.com/en-gb/data-center/tesla-k80/}{NVIDIA #1}}{}
-    \ifthenelse{\equal{#1}{P100}}{\href{https://www.nvidia.com/en-us/data-center/tesla-p100/}{NVIDIA #1}}{}
-    \ifthenelse{\equal{#1}{RTX3090}}{\href{https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090/}{NVIDIA #1}}{}
-    \ifthenelse{\equal{#1}{RTX2080TI}}{\href{https://www.nvidia.com/en-us/data-center/tesla-p100/}{NVIDIA #1}}{}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% THIS SECTION MAY NOT BE COPIED INTO ANOTHER PAPER WITHOUT MAKING GREGOR VON LASZEWSKI COAUTHOR
+%
+%
+\newcommand{\nvidia}[1]{
+\ifthenelse{\equal{#1}{A100}}{\href{https://www.nvidia.com/en-us/data-center/a100/}{NVIDIA #1}}{}%
+\ifthenelse{\equal{#1}{V100}}{\href{https://www.nvidia.com/en-us/data-center/a100/}{NVIDIA #1}}{}%
+\ifthenelse{\equal{#1}{K80}}{\href{https://www.nvidia.com/en-gb/data-center/tesla-k80/}{NVIDIA #1}}{}%
+\ifthenelse{\equal{#1}{P100}}{\href{https://www.nvidia.com/en-us/data-center/tesla-p100/}{NVIDIA #1}}{}%
+\ifthenelse{\equal{#1}{RTX3090}}{\href{https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090/}{NVIDIA #1}}{}%
+\ifthenelse{\equal{#1}{RTX2080TI}}{\href{https://www.nvidia.com/en-eu/geforce/20-series/}{NVIDIA #1}}{}%
+\ifthenelse{\equal{#1}{Volta}}{\href{https://www.nvidia.com/en-us/data-center/volta-gpu-architecture/}{NVIDIA #1}}{}%
+}
 %\newcommand{\nvidiaV}{\href{https://www.nvidia.com/en-us/data-center/v100/}{NVIDIA V100}}
 
 \begin{table*}[htb]
@@ -443,9 +467,10 @@ DGX Fox \cite{www-dgx-station-a100}
         \hline
         \hline
          \ref{id:anl}   & ANL    & Aurora & \cite{www-aurora}         &              &                  & & & &    ??? 2022   \\ \hline
-         \ref{id:ornl}  & ORNL   & Summit &\cite{www-summit}         &        27000 & NVIDIA Volta     & & & &               \\ \hline
+         \ref{id:ornl}  & ORNL   & Summit &\cite{www-summit}         &        27000 & \nvidia{volta}     & & & &               \\ \hline
          \ref{id:nersc} & NERSC  & Perlmutter & \cite{www-perlmutter} &         6000 & \nvidia{A100}      & & & & Jan 2022      \\ \hline
-         \ref{id:sdsc}  & SDSC   & Expanse & \cite{www-expanse}       &          200 & NVIDIA V100 SMX2 & & & &               \\ \hline
+         \ref{id:sdsc}  & SDSC   & Expanse & \cite{www-expanse}       &          200 & \nvidid{V100}
+         SMX2 & & & &               \\ \hline
          \ref{id:uva}   & UVA    & Rivanna &\cite{www-rivanna}       &            8 & \nvidia{A100}      & 80GB & ? & &  Feb 2022      \\
             &    &  &       &            8 & \nvidia{A100}      & 40GB & 8 & &       \\
             &    &  &       &            ? & \nvidid{RTX3090}   & 24GB & ? & ? & 2021          \\
@@ -455,14 +480,15 @@ DGX Fox \cite{www-dgx-station-a100}
             &    &  &       &            ? & \nvidia{P100}      & 12GB & 4 & 3 & 2021          \\
             &    &  &       &            ? & \nvidia{RTX2080TI} & 11GB & 10 & 2 & 2021          \\
          \hline
-         \ref{id:ral}   & RAL    & Pearl &\cite{www-pearl-1}         &           16 & \nvidiaV      & & & &  \\ \hline
-         \ref{id:dgx}   & Fox    & DGX Station A100 &\cite{www-dgx-station-a100} & 4 & \nvidiaA      & 80GB & 4 & 1 & May 2021      \\
+         \ref{id:ral}   & RAL    & Pearl &\cite{www-pearl-1}         &           16 & \nvidia{V100}      & & & &  \\ \hline
+         \ref{id:dgx}   & Fox    & DGX Station A100 &\cite{www-dgx-station-a100} & 4 & \nvidia{A100}      & 80GB & 4 & 1 & May 2021      \\
          \hline
     \end{tabular}
     \end{adjustbox}
 \end{table*}
 
 Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
+
 
 \TODO{Add your personal computers to this table \url{https://github.com/Data-ScienceHub/mlcommons-science/issues/37}}
 \begin{table*}[htb]
@@ -508,6 +534,13 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 \TODO{Geoffrey: please add acknowledgement for funding, other acks}
 \end{acks}
 
+%
+% THIS SECTION MAY NOT BE COPIED INTO ANOTHER PAPER WITHOUT MAKING GREGOR VON LASZEWSKI COAUTHOR
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{paper-capstone-earthquake}
 
@@ -516,7 +549,7 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 \TODO{wrapfigure does somehow not work in this template}
 
 {\bf Thomas Butler}
-is a Graduate Student at University of Virginia's School of Data Science. His undergraduate degree is in Biomedical engineering. He has over 8 years of experience in the Infertility field helping patients, jointly running a Andrology lab, and contributing research to advance the field through joint research on how AMH effects pregnancy outcomes and sperm antibodies effect PSA. He has a certificate in Data Analytics from Georgia Institute of Technology.
+is a Graduate Student at University of Virginia's School of Data Science. His undergraduate degree is in Biomedical engineering. He has over eight years of experience in the Infertility field helping patients, jointly running a Andrology lab, and contributing research to advance the field through joint research on how AMH effects pregnancy outcomes and sperm antibodies effect PSA. He has a certificate in Data Analytics from Georgia Institute of Technology.
 
 {\bf Robert Knuuti}
 is a Graduate Student at University of Virginia's School of Data Science. He has over 10 years experience in system architecture and software engineering, and specializes in Development Operations and Cloud Computing. He has constructed air gapped Continuous Integration and Continuous Delivery systems for multiple organizations each supporting more than 100 developers and has facilitated the construction of repeatable, tractable builds for users of these systems.

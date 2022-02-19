@@ -15,6 +15,19 @@
 \providecommand{\mlperf}{MLPerf}
 \providecommand{\mlcube}{MLCube}
 
+\newcommand{\BIOFIG}[3]{%
+\parindent 0pt%
+\setlength{\intextsep}{6pt}%
+\setlength{\columnsep}{6pt}%
+
+{\bf #2}
+
+\begin{wrapfigure}{r}{0.2\columnwidth}%
+    \includegraphics[width=0.2\columnwidth]{#1}%
+\end{wrapfigure}%
+#3%
+}
+
 
 \setcopyright{none}
 %\setcopyright{rightsretained}
@@ -549,7 +562,12 @@ Pearl \cite{www-pearl-1}
 \subsection {Nvidia DGX Workstation}
 \label{id:dgx} 
 
-The NVIDIA DGX Station A100 is a commercially available product that can provide powerful computing resources to all industries. The DGX Station is an AI resource that can run parallel jobs and support training, inference, and data analytics. It contains 4 NVIDIA A100 GPUs and up to 320 GBs of GPU memory. With the use of Multi-Instance GPU (MIG), each A100 GPU can be partitioned into 7 isolated instances.
+The NVIDIA DGX Station A100 is a commercially available product that
+can provide powerful computing resources to all industries. The DGX
+Station is an AI resource that can run parallel jobs and support
+training, inference, and data analytics. It contains 4 NVIDIA A100
+GPUs and up to 320 GBs of GPU memory. With the use of Multi-Instance
+GPU (MIG), each A100 GPU can be partitioned into 7 isolated instances.
 
 DGX Fox \cite{www-dgx-station-a100}
 
@@ -661,20 +679,6 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 
 \section*{Biographies}
 
-
-\newcommand{\BIOFIG}[3]{%
-\parindent 0pt%
-\setlength{\intextsep}{6pt}%
-\setlength{\columnsep}{6pt}%
-
-{\bf #2}
-
-\begin{wrapfigure}{r}{0.2\columnwidth}%
-    \includegraphics[width=0.2\columnwidth]{#1}%
-\end{wrapfigure}%
-#3%
-}
-
 \BIOFIG{images/bio/gregor.png}{Thomas Butler}{is a Graduate Student at
   University of Virginia's School of Data Science. His undergraduate
   degree is in Biomedical engineering. He has over eight years of
@@ -733,6 +737,8 @@ The following manuals have been developed by the team:
 \begin{itemize}
     \item Introduction to Python \cite{las-intro-python}
 \end{itemize}
+
+\TODO{There are more we developed in the web page} 
 
 \clearpage 
 

@@ -1,3 +1,12 @@
+@misc{www-singularity,
+	title = {{Singularity}},
+	author = {{Sylabs}},
+	year = 2022,
+	month = jan,
+	url = {https://sylabs.io},
+	howpublished = {Web Page}
+}
+
 @misc{fox2021earthquake,
   title =	 {Earthquake Nowcasting with Deep Learning},
   author =	 {Geoffrey Fox and John Rundle and Andrea Donnellan
@@ -8,18 +17,21 @@
   primaryClass = {physics.geo-ph}
 }
 
-@InProceedings{fox2022aiforscience,
+%% TODO: Fix this entry to use the IEEE paper once published
+@online{fox2022aiforscience,
   author =	 {Geoffrey Fox and John Rundle and Bo Feng},
   title =	 {{AI for Science illustrated by Deep Learning for
                   Geospatial Time Series}},
+  booktitle = {IEEE 12th Annual Computing and Communication
+                  Workshop and Conference},
   year =	 2022,
   month =	 jan,
   organization = {Digital Science Center},
   publisher =	 {IEEE},
-  series =	 {IEEE 12th Annual Computing and Communication
-                  Workshop and Conference},
+  series =	 {CCWC},
   url =
-                  {https://docs.google.com/presentation/d/1UiMVV4mMzIXIzBJ2WqFrWnqVI6NaI0jevb7BKulun2c/edit?usp=sharing}
+                  {https://docs.google.com/presentation/d/1UiMVV4mMzIXIzBJ2WqFrWnqVI6NaI0jevb7BKulun2c/edit?usp=sharing},
+  note = {improve}
 }
 
 @misc{las-intro-python,
@@ -44,7 +56,8 @@
 }
 
 @misc{www-aurora,
-  title =	 {{Aurora Argonne Leadership Computing Facility}},
+  title =	 {Aurora},
+  author =   {Argonne Leadership Computing Facility},
   year =	 2022,
   month =	 jan,
   url =		 {https://www.alcf.anl.gov/aurora},
@@ -67,17 +80,15 @@
   month =	 jan,
   url =
                   {https://www.nvidia.com/en-us/data-center/dgx-station-a100},
-  year =	 2022,
-  month =	 jan,
   howpublished = {Web Page}
 }
 
 @misc{www-expanse,
   title =	 {{Expanse}},
+  author = {San Diego Supercomputer Center},
   year =	 2022,
   month =	 jan,
-  url =
-                  {https://www.sdsc.edu/services/hpc/expanse/index.html},
+  url =      {https://www.sdsc.edu/services/hpc/expanse/index.html},
   howpublished = {Web Page}
 }
 
@@ -120,6 +131,15 @@
   howpublished = {Web Page}
 }
 
+@misc{www-mlcommons-science,
+  author =	 {MLCommons Science Working Group},
+  title =	 {Science Working Group | MLCommons },
+  year =	 2022,
+  url =		 {https://mlcommons.org/en/groups/research-science/},
+  howpublished = {Web Page}
+}
+
+%% TODO: Reivew this entry; seems wrong
 @Misc{www-mlcommons-eathquake,
   author =	 {Geoffery Fox and Gregor von Laszewski},
   howpublished = {Web Page},
@@ -127,8 +147,7 @@
   year =	 2013,
   journal =	 {GitHub Repository},
   publisher =	 {GitHub},
-  url =
-                  {https://github.com/Data-ScienceHub/mlcommons-science},
+  url = {https://github.com/Data-ScienceHub/mlcommons-science},
 }
 
 @misc{www-mlcube,
@@ -191,7 +210,7 @@
 
 @misc{www-perlmutter,
   title =	 {{Perlmutter}},
-  journal =	 {NERSC},
+  author =	 {National Energy Research Scientific Computing Center},
   url =		 {https://www.nersc.gov/systems/perlmutter},
   year =	 2022,
   month =	 jan,
@@ -200,6 +219,7 @@
 
 @misc{www-pytorch,
   title =	 {{PyTorch}},
+  author =   {{Facebook AI Research Lab} and {PyTorch Community}},
   year =	 2022,
   month =	 jan,
   url =		 {https://pytorch.org},
@@ -251,20 +271,67 @@
 }
 
 @misc{www-rivanna,
-  title =	 {{Rivanna at University of Virginia Research
-                  Computing}},
+  title =	 {{Rivanna}},
+  author =   {Univerity of Virginia Research Computing},
   year =	 2022,
   month =	 jan,
-  url =
-                  {https://www.rc.virginia.edu/userinfo/rivanna/overview},
+  url =      {https://www.rc.virginia.edu/userinfo/rivanna/overview},
   howpublished = {Web Page}
 }
 
 @misc{www-summit,
   title =	 {{Summit}},
-  journal =	 {Oak Ridge Leadership Computing Facility},
+  author =	 {Oak Ridge Leadership Computing Facility},
   year =	 2022,
   month =	 jan,
   url =		 {https://www.olcf.ornl.gov/summit},
   howpublished = {Web Page}
+}
+
+@article{www-murakami2021,
+   author={Murakami, Sota and Ichimura, Tsuyoshi and Fujita, Kohei and Hori, Takane and Ohta, Yusaku},   
+   title={Sensitivity Analysis for Seafloor Geodetic Constraints on Coseismic Slip and Interseismic Slip-Deficit Distributions},      
+   journal={Frontiers in Earth Science},      
+   volume={9},      
+   year={2021},
+   month={April},
+   url={https://www.frontiersin.org/article/10.3389/feart.2021.614088},       
+   doi={10.3389/feart.2021.614088},      
+   issn={2296-6463},
+   pages={1--13},
+   abstract={Estimating the coseismic slip distribution and interseismic slip-deficit distribution play an important role in understanding the mechanism of massive earthquakes and predicting the resulting damage. It is useful to observe the crustal deformation not only in the land area, but also directly above the seismogenic zone. Therefore, improvements in terms of measurement precision and increase in the number of observation points have been proposed in various forms of seafloor observation. However, there is lack of research on the quantitative evaluation of the estimation accuracy in cases where new crustal deformation observation points are available or when the precision of the observation methods have been improved. On the other hand, the crustal structure models are improving and finite element analysis using these highly detailed crustal structure models is becoming possible. As such, there is the real possibility of performing an inverted slip estimation with high accuracy via numerical experiments. In view of this, in this study, we proposed a method for quantitatively evaluating the improvement in the estimation accuracy of the coseismic slip distribution and the interseismic slip-deficit distribution in cases where new crustal deformation observation points are available or where the precision of the observation methods have been improved. As a demonstration, a quantitative evaluation was performed using an actual crustal structure model and observation point arrangement. For the target area, we selected the Kuril Trench off Tokachi and Nemuro, where M9-class earthquakes have been known to occur in the past and where the next imminent earthquake is anticipated. To appropriately handle the effects of the topography and plate boundary geometry, a highly detailed three-dimensional finite element model was constructed and Green’s functions of crustal deformation were calculated with high accuracy. By performing many inversions via optimization using Green’s functions, we statistically evaluated the effect of increase in the number of observation points of the seafloor crustal deformation measurement and the influence of measurement error, taking into consideration the diversity of measurement errors. As a result, it was demonstrated that the observation of seafloor crustal deformation near the trench axis plays an extremely important role in the estimation performance.}
+}
+@article{cheong1997optimizer,
+  title={An optimizer for multimedia instruction sets},
+  author={Cheong, Gerald and Lam, Monica},
+  journal={Contract},
+  volume={30602},
+  number={95-C},
+  pages={0098},
+  year={1997},
+  publisher={Citeseer},
+  url={https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.36.9750}
+}
+
+@misc{mattson2019mlperf,
+    title={MLPerf Training Benchmark},
+    author={Peter Mattson and Christine Cheng and Cody Coleman and Greg Diamos and Paulius Micikevicius and David Patterson and Hanlin Tang and Gu-Yeon Wei and Peter Bailis and Victor Bittorf and David Brooks and Dehao Chen and Debojyoti Dutta and Udit Gupta and Kim Hazelwood and Andrew Hock and Xinyuan Huang and Atsushi Ike and Bill Jia and Daniel Kang and David Kanter and Naveen Kumar and Jeffery Liao and Guokai Ma and Deepak Narayanan and Tayo Oguntebi and Gennady Pekhimenko and Lillian Pentecost and Vijay Janapa Reddi and Taylor Robie and Tom St. John and Tsuguchika Tabaru and Carole-Jean Wu and Lingjie Xu and Masafumi Yamazaki and Cliff Young and Matei Zaharia},
+    year={2019},
+    eprint={1910.01500},
+    archivePrefix={arXiv},
+    primaryClass={cs.LG}
+}
+
+@article{Saito2004,
+    title = {The earth simulator: Roles and impacts},
+    journal = {Nuclear Physics B - Proceedings Supplements},
+    volume = {129-130},
+    pages = {102-108},
+    year = {2004},
+    note = {Lattice 2003},
+    issn = {0920-5632},
+    doi = {https://doi.org/10.1016/S0920-5632(03)02511-8},
+    url = {https://www.sciencedirect.com/science/article/pii/S0920563203025118},
+    author = {Tetsuya Sato},
+    abstract = {In the first place, the architecture and performance of the Earth Simulator and the managing system of the Earth Simulator Center are briefly described. Secondly, some examples of products obtained so far by ES are presented to demonstrate its actual power. Then, a holistic simulator concept that should be the next generation simulator is described, and lastly the paradigm shift in science, manufacturing and human thought that could be brought by the holistic simulator is mentioned [1–3].}
 }

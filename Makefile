@@ -32,3 +32,6 @@ clean:
 	latexmk -CA -bibtex
 	rm -f ${FILE}.run.xml
 
+dot:
+	dot -Tpdf -o images/singularity.pdf images/singularity.dot
+

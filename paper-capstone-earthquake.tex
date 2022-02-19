@@ -663,11 +663,16 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 
 
 \newcommand{\BIOFIG}[3]{%
+\parindent 0pt%
+\setlength{\intextsep}{6pt}%
+\setlength{\columnsep}{6pt}%
 
-  {\bf #2} #3
-  %\begin{wrapfigure}[l]{.2\columnwidth}
-  \includegraphics[width=.2\columnwidth]{#1}%
-  %\end{wrapfigure}
+{\bf #2}
+
+\begin{wrapfigure}{r}{0.2\columnwidth}%
+    \includegraphics[width=0.2\columnwidth]{#1}%
+\end{wrapfigure}%
+#3%
 }
 
 \BIOFIG{images/bio/gregor.png}{Thomas Butler}{is a Graduate Student at

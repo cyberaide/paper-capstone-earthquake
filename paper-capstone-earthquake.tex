@@ -471,54 +471,56 @@ Gregors MNIST benchmark results are summarized in Table~\ref{tab:mnist}.
 
 \subsection{Hardware}
 
-\subsection{Aurora}
+\subsubsection{Aurora}
 \label{id:anl} 
 
-The Aurora supercomputer, sponsored by the U.S. Department of Energy
-(DOE), is part of the Argonne Leadership Computing Facility (ACLF). It
-was developed with the help of industry experts from Intel and
-Cray. Aurora offers HPC for data analytics and AI development with a
-peak performance of over 2 Exaflop DP. The system is based on the HPE
-Cray EX supercomputer platform and offers over 9,000 compute nodes.
+The Aurora supercomputer \cite{www-aurora} is locatd at that Argonne
+Leadership Computing Facility (ACLF) part of the U.S. Department of
+Energy (DOE).  It was developed with the help of industry experts from
+Intel and Cray. Aurora offers HPC for data analytics and AI
+development with a peak performance of over 2 Exaflop DP. The system
+is based on the HPE Cray EX supercomputer platform and offers over
+9,000 compute nodes.
 
-Argonne National Laboratory (ANL), ... \cite{www-aurora}
-
-\subsection{Summit}
+\subsubsection{Summit}
 \label{id:ornl} 
 
-The Summit supercomputer, sponsored by the U.S. Department of Energy
-(DOE), is located in the Oak Ridge Leadership Computing Facility
-(OLCF). The open science computing system is available to government,
-academic, and industry researchers to solve complex problems in all
-fields of science. The system is powered by 4,608 nodes which each
-house multiple IBM POWER9 CPUs and NVIDIA Volta GPUs on top of half a
+The Summit supercomputer\cite{www-summit} is located in the Oak Ridge
+Leadership Computing Facility (OLCF) part of the U.S. Department of
+Energy (DOE). The system is avalable to government, academic, and
+industry researchers to solve complex problems in all fields of
+science. The system is powered by 4,608 nodes which each house
+multiple IBM POWER9 CPUs and NVIDIA Volta GPUs on top of half a
 terabyte of coherent memory.
 
-Oak Ridge National Laboratory (ORNL), Summit \cite{www-summit}
 
-
-\subsection{Perlmutter}
+\subsubsection{Perlmutter}
 \label{id:nersc} 
 
-The Perlmutter supercomputer, sponsored by the U.S. Department of
-Energy (DOE), is located in Shyh Wang Hall at Berkeley Lab and is
-operated by the National Energy Research Scientific Computing Center
-(NERSC). The supercomputer has a 12 cabinet GPU systems with over
-1,500 nodes and a 12 cabinet CPU system containing over 3,000
-nodes. It is supported by 35 petabytes of all-flash storage which can
-move data at 5 terabytes/sec.
-
-National Energy Research Scientific Computing Center (NERSC), ...
-\cite{www-perlmutter}
-
-\subsection{SDSC}
-\label{id:sdsc} 
-\TODO{Which of the SDSC systems will we be benchmarking?}
-San Diego Super Computing Center, ... \cite{www-expanse} 
+The Perlmutter \cite{www-perlmutter} supercomputer is located at the
+National Energy Research Scientific Computing Center (NERSC) which is
+part of the U.S. Department of Energy (DOE).  It has a 12 cabinet GPU
+systems with over 1,500 nodes and a 12 cabinet CPU system containing
+over 3,000 nodes \TODO{This is inconsistant or not properly explained
+  as 2 node numbers are used}. It is supported by 35 petabytes of
+all-flash storage which can move data at 5 terabytes/sec.
 
 
-\subsection{University of Virginia Rivanna}
+\subsubsection{Expanse}
+\label{id:sdsc}
+
+The Expanse \cite{www-expanse} system at the Sandiego Super Computing
+Center (SDSC) ....
+
+\TODO{Expanse description incomplete}
+
+\subsubsection{Rivanna}
 \label{id:uva} 
+
+
+University of Virginia Rivanna
+  
+\TODO{Rivann description is inomplete}
 
 UVA, Rivanna, A100, RTX3090, others may not have enough memory.
 \cite{www-rivanna} \TODO{description of Rivanna on web page is not
@@ -545,31 +547,25 @@ will leverage this deployment also on them.
 \subsection{Pearl}
 \label{id:ral} 
 
-The PEARL system, funded by the Alan Turing Institute, is hosted at
-the Rutherford Appleton Laboratory by the Science and Technology
-Facilities Council (STFC). It was developed for the advancement of AI
-and Machine Learning research with large-scale scientific datasets,
-already contributing to the fields of materials, environmental and
-life sciences, and astronomy. It is comprised of two NVIDIA DGX2
-nodes, 32 GPUs, 3TB of system memory, 1TB of GPU memory, and 600TB of
-high-speed storage.
-
-Rutherford Appleton Laboratory (RAL), UK 
-Pearl \cite{www-pearl-1}
-
+The PEARL \cite{www-pearl-1} system is located t the Alan Turing
+Institute in the the Rutherford Appleton Laboratory, UK.  It was
+developed for the advancement of AI and Machine Learning research with
+large-scale scientific datasets, already contributing to the fields of
+materials, environmental and life sciences, and astronomy. It is
+comprised of two NVIDIA DGX2 nodes, 32 GPUs, 3TB of system memory, 1TB
+of GPU memory, and 600TB of high-speed storage.
 
 
 \subsection {Nvidia DGX Workstation}
 \label{id:dgx} 
 
-The NVIDIA DGX Station A100 is a commercially available product that
-can provide powerful computing resources to all industries. The DGX
-Station is an AI resource that can run parallel jobs and support
-training, inference, and data analytics. It contains 4 NVIDIA A100
-GPUs and up to 320 GBs of GPU memory. With the use of Multi-Instance
-GPU (MIG), each A100 GPU can be partitioned into 7 isolated instances.
-
-DGX Fox \cite{www-dgx-station-a100}
+The NVIDIA DGX Station A100 \cite{www-dgx-station-a100} is a
+commercially available product that can provide powerful computing
+resources to all industries. The DGX Station is an AI resource that
+can run parallel jobs and support training, inference, and data
+analytics. It contains 4 NVIDIA A100 GPUs and up to 320 GBs of GPU
+memory. With the use of Multi-Instance GPU (MIG), each A100 GPU can be
+partitioned into 7 isolated instances.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

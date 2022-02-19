@@ -586,13 +586,13 @@ partitioned into 7 isolated instances.
 
 \begin{table*}[htb]
     \caption{Overview of compute resources.}
-    \label{tab:my_label}
+    \label{tab:hwoverview}
     \centering
 %\begin{adjustbox}{angle=90}
 \begin{adjustbox}{max width=\textwidth}
     \begin{tabular}{|r|l|ll|r|l|l|l|l|l|}
         \hline
-        Section & Organization   & Machine                         & & Processors    & GPUs             & \makecell{Memory\\/Device} &  \makecell{GPU\\/Device} & \makecell{No. of\\ nodes} & Commissioned \\ 
+        See also & Organization   & Machine                         & & Processors    & GPUs             & \makecell{Memory\\/Device} &  \makecell{GPU\\/Device} & \makecell{No. of\\ nodes} & Commissioned \\ 
         \hline
         \hline
          \ref{id:anl}   & ANL    & Aurora & \cite{www-aurora}         &              &                  & & & &    ??? 2022   \\ \hline
@@ -622,16 +622,16 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 \TODO{Add your personal computers to this table \url{https://github.com/Data-ScienceHub/mlcommons-science/issues/37}}
 \begin{table*}[htb]
     \caption{Overview of compute resources.}
-    \label{tab:my_label}
+    \label{tab:desktops}
     \centering
 %\begin{adjustbox}{angle=90}
 \begin{adjustbox}{max width=\textwidth}
     \begin{tabular}{|r|l|l|r|l|l|l|l|l|}
         \hline
-        Section & Organization   & Machine                         & Processors    & GPUs             & \makecell{Memory\\/Device} &  \makecell{GPU\\/Device} & \makecell{No. of\\ nodes} & Commissioned \\ 
+        See also & Organization   & Machine                         & Processors    & GPUs             & \makecell{Memory\\/Device} &  \makecell{GPU\\/Device} & \makecell{No. of\\ nodes} & Commissioned \\ 
         \hline
         \hline
-         \ref{id:gcomputer}   & 
+         Table \ref{tab:gcompute}   & 
          Gregor    & 
          5950X   &  
          1 &   
@@ -650,9 +650,9 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
          1 & 
          Feb 2022   \\
          \hline
-         \ref{id:tcomputer}   & Thomas.A  & i7-8750H &  1 &   NVIDIA GeForce RTX 2070 with Max-Q Design  & 16GB & 1 & 1 & 2019   \\
+         \ref{sec:tcomputer}   & Thomas.A  & i7-8750H &  1 &   NVIDIA GeForce RTX 2070 with Max-Q Design  & 16GB & 1 & 1 & 2019   \\
          \hline
-         \ref{id:t2computer}   & Thomas.B  & i7-7700HQ &  1 &   NVIDIA GeForce GTX 1060  & 16GB & 1 & 1 & 2017   \\
+         \ref{sec:t2computer}   & Thomas.B  & i7-7700HQ &  1 &   NVIDIA GeForce GTX 1060  & 16GB & 1 & 1 & 2017   \\
          \hline
     \end{tabular}
     \end{adjustbox}
@@ -668,6 +668,7 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\input{machines}
 
 
 \bibliographystyle{ACM-Reference-Format}

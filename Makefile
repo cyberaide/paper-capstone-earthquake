@@ -36,3 +36,5 @@ clean:
 dot:
 	dot -Tpdf -o images/singularity.pdf images/singularity.dot
 
+info:
+	python bin/sysinfo.py

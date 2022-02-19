@@ -8,13 +8,6 @@
 \usepackage{adjustbox}
 \usepackage{makecell} 
 \usepackage{ifthen}
-% \usepackage[numbers]{natbib}‎
-
-%\usepackage[colorlinks = true,
-%            linkcolor = blue,
-%            urlcolor  = blue,
-%            citecolor = blue,
-%            anchorcolor = blue]{hyperref}
 
 \newcommand{\TODO}[1]{\todo[inline]{#1}}
 %\providecommand{\mlperf}{MLPerf\texttrademark{}}
@@ -51,6 +44,9 @@
 \makeatother
 \xpretocmd{\digraph}{\addFileDependency{#2.dot}}{}{}
 
+
+\newcommand{\GITISSUE}[1]{\href{https://github.com/Data-ScienceHub/mlcommons-science/issues/#1}{GitHub Issue #1}}}
+\newcommand{\GITPULL}[1]{\href{https://github.com/laszewsk/mlcommons/pull/#1}{GitHub Pull #1}}}
 
 \begin{document}
 
@@ -166,12 +162,22 @@ TBD
 
 \section{Introduction}
 
-Several research efforts have been executed over the years to establish a complex set of factors that accurately predict where an earthquake could occur, and what impacts an earthquake would cause to the environment when they occur.
-Not only is this an algorithmically complex problem, but it is also computationally dense and requires high performance hardware to obtain these predictions\cite{fox2022aiforscience}.
-The intersection of these two elements create an ideal environment for building fair benchmarks.
-By establishing a rigorous process for constructing and running deep learning models the basis for comparing not just computational power in the High Performance Computing ecosystem, but also establish a benchmarks of new scientific discoveries from its execution.
+Several research efforts have been executed over the years to
+establish a complex set of factors that accurately predict where an
+earthquake could occur, and what impacts an earthquake would cause to
+the environment when they occur.  Not only is this an algorithmically
+complex problem, but it is also computationally dense and requires
+high performance hardware to obtain these
+predictions\cite{fox2022aiforscience}.  The intersection of these two
+elements create an ideal environment for building fair benchmarks.  By
+establishing a rigorous process for constructing and running deep
+learning models the basis for comparing not just computational power
+in the High Performance Computing ecosystem, but also establish a
+benchmarks of new scientific discoveries from its execution.
 
-For this study, we review the following model architectures across various hardware platforms to establish this benchmark:
+For this study, we review the following model architectures across
+various hardware platforms to establish this benchmark:
+
 \begin{itemize}
     \item Long Short-Term Memory (LSTM) Recurrent Neural Network (RNN)
     \item Spacio-Temporal Transformer Network (S2TN) as a Science Transformer
@@ -188,13 +194,21 @@ For each model, the benchmark analysis across the following deep learning framew
     \item Pytorch.
 \end{itemize}
 
-Each framework have their own performance measures that will shape the reference benchmark implementation.
+Each framework have their own performance measures that will shape the
+reference benchmark implementation.
 
 \subsection{MLCommons}
 
-MLCommons is an open engineering organization that seeks to unify the engineering and machine learning communities through system benchmarks, open data, and best practices \cite{www-mlcommons}.
-By using open data, a reference implementation for benchmarking, and executing best practices, the necessary rigor enables the construction repeatable research to establish a basis when performing future analysis.
-Using MLCommons organizational standards set by \mlperf{}, the dimensions of a the minimally viable solution for benchmarking are know and to establish our comparison criteria across our models and the executions on the different hardware sets\cite{mattson2019mlperf}.
+MLCommons is an open engineering organization that seeks to unify the
+engineering and machine learning communities through system
+benchmarks, open data, and best practices \cite{www-mlcommons}.  By
+using open data, a reference implementation for benchmarking, and
+executing best practices, the necessary rigor enables the construction
+repeatable research to establish a basis when performing future
+analysis.  Using MLCommons organizational standards set by \mlperf{},
+the dimensions of a the minimally viable solution for benchmarking are
+know and to establish our comparison criteria across our models and
+the executions on the different hardware sets\cite{mattson2019mlperf}.
 
 \TODO{Need to confirm what the criteria of the benchmark submission is.}
 
@@ -202,56 +216,134 @@ Using MLCommons organizational standards set by \mlperf{}, the dimensions of a t
 
 \subsection{Why Build a Science Benchmark?}
 
-The \mlperf{} framework already have several feature complete benchmarks that can judge system performance, however these benchmarks are centered on well known algorithms with solutions that are well known.
-Additionally, some CPU architectures create optimized instructions to solve common algorithmic problems at the microcode level, creating a performance boost when these prepared instructions are encountered\cite{cheong1997optimizer}.
-While these measures are still of great importance, they do not reflect the performance of systems based on non-deterministic measures that exist in nature.
-This makes benchmarking using a scientific dataset an ideal candidate for calculating performance, as there's an inherit randomness that's difficult to "game" this system and build predictions.
-This is especially true when attempting to predict the next occurrence of an earthquake, as complex models are required to gain predictive insights\cite{www-murakami2021}.
+The \mlperf{} framework already have several feature complete
+benchmarks that can judge system performance, however these benchmarks
+are centered on well known algorithms with solutions that are well
+known.  Additionally, some CPU architectures create optimized
+instructions to solve common algorithmic problems at the microcode
+level, creating a performance boost when these prepared instructions
+are encountered\cite{cheong1997optimizer}.  While these measures are
+still of great importance, they do not reflect the performance of
+systems based on non-deterministic measures that exist in nature.
+This makes benchmarking using a scientific dataset an ideal candidate
+for calculating performance, as there's an inherit randomness that's
+difficult to "game" this system and build predictions.  This is
+especially true when attempting to predict the next occurrence of an
+earthquake, as complex models are required to gain predictive
+insights\cite{www-murakami2021}.
 
 \subsection{What is MLCommons Science Research?}
 
-MLCommons Science Research group is involved in edge and data center issues, end-to-end systems, inference and training. MLCommons Science Research focuses on Science applications and not industry. There are similarities between industry and science, for example image data is similar but some algorithms can be very different. The best example of this is particle physics experiments, quarks and lumens are not a common thing to model in industry \cite{www-mlcommons-science}. 
+MLCommons Science Research group is involved in edge and data center
+issues, end-to-end systems, inference and training. MLCommons Science
+Research focuses on Science applications and not industry. There are
+similarities between industry and science, for example image data is
+similar but some algorithms can be very different. The best example of
+this is particle physics experiments, quarks and lumens are not a
+common thing to model in industry \cite{www-mlcommons-science}.
 
-The primary goal of MLCommons Science Research is to develop optimal methods to improve both speed and efficiency of scientific outcomes. This is done by measure how different models perform on different scientific datasets, in particular score the models based on how well they do on scientific discovery. This could be anywhere from accuracy of a model to time to reach  specific accuracy target when new data is introduced. In general, how well each model matches the goals of that particular scientific field. By using verified datasets following best standardized practice on how to build and exchange models using the reference materials on benchmarked machines, knowledge can flow more easily and freely between various researchers. By having these standard methods, both the monetary cost and time can be reduced between researcher regardless of their speciality.
+The primary goal of MLCommons Science Research is to develop optimal
+methods to improve both speed and efficiency of scientific
+outcomes. This is done by measure how different models perform on
+different scientific datasets, in particular score the models based on
+how well they do on scientific discovery. This could be anywhere from
+accuracy of a model to time to reach specific accuracy target when new
+data is introduced. In general, how well each model matches the goals
+of that particular scientific field. By using verified datasets
+following best standardized practice on how to build and exchange
+models using the reference materials on benchmarked machines,
+knowledge can flow more easily and freely between various
+researchers. By having these standard methods, both the monetary cost
+and time can be reduced between researcher regardless of their
+speciality.
 
-Currently MLCommons Science Research has four datasets based on climate, material science, medicine and earthquakes with a fifth dataset on plasma physics being added soon. Each dataset has their own method used to solve their scientific problem \cite{www-mlcommons-science}.
+Currently MLCommons Science Research has four datasets based on
+climate, material science, medicine and earthquakes with a fifth
+dataset on plasma physics being added soon. Each dataset has their own
+method used to solve their scientific problem
+\cite{www-mlcommons-science}.
 
 \subsection{What is \mlcube{}?}
 
-\mlcube{} is  a set of standards and software developed by MLCommons for delivering machine learning models across container runtimes such as docker, kubernetes, singularity, or for automating the model's execution over ssh.
-\mlcube{} provides a common configuration format and interface such that consumers of a model do not need to worry about the underlying configuration and baseline of supporting libraries, and enables the user to focus on the model itself\cite{www-mlcube}.
+\mlcube{} is a set of standards and software developed by MLCommons
+for delivering machine learning models across container runtimes such
+as docker, kubernetes, singularity, or for automating the model's
+execution over ssh.  \mlcube{} provides a common configuration format
+and interface such that consumers of a model do not need to worry
+about the underlying configuration and baseline of supporting
+libraries, and enables the user to focus on the model
+itself\cite{www-mlcube}.
 
 There are two targets when building \mlcube{} models:
 
 \begin{itemize}
-    \item \textbf{Developer.}  The developer produces a YAML configuration file that describes the target execution details including platform, runtime dependencies, inputs, outputs, metadata about the model, and the source code.  Additionally, this configuration file offers branching paths based on what \mlcube{} runtime backend is selected (for example, the container image to use for docker can be configured differently than a kubeflow configuration).  This is so the implementation details can be explicitly addressed, if necessary, by the model developer and abstracts this complexity away from consumers.
-    \item \textbf{User.}  The user of the system will receive the \mlcube{} code repository and execute a command that identifies which platform they intend to run the model on and any type of input parameters to the model detailed by the developer.
+  
+    \item \textbf{Developer.}  The developer produces a YAML
+      configuration file that describes the target execution details
+      including platform, runtime dependencies, inputs, outputs,
+      metadata about the model, and the source code.  Additionally,
+      this configuration file offers branching paths based on what
+      \mlcube{} runtime backend is selected (for example, the
+      container image to use for docker can be configured differently
+      than a kubeflow configuration).  This is so the implementation
+      details can be explicitly addressed, if necessary, by the model
+      developer and abstracts this complexity away from consumers.
+
+    \item \textbf{User.}  The user of the system will receive the
+      \mlcube{} code repository and execute a command that identifies
+      which platform they intend to run the model on and any type of
+      input parameters to the model detailed by the developer.
 \end{itemize}
 
-As described by the \mlcube{} development team, this ecosystem establishes a contract between model developers and consumers of that model so that results can be easily shared and provide a framework to produce consistent results.
+As described by the \mlcube{} development team, this ecosystem
+establishes a contract between model developers and consumers of that
+model so that results can be easily shared and provide a framework to
+produce consistent results.
 
-The MLCommons Earthquake Science Benchmark models target the \mlcube{} mechanism for delivery.
+The MLCommons Earthquake Science Benchmark models target the \mlcube{}
+mechanism for delivery.
 
 \subsection{Earthquake prediction}
 
-Earthquake prediction is a complex and old problem. There are two major tasks related to earthquakes. One is forecasting earthquake occurrences/likelihoods. Another is to predict damage once an earthquake does happen. The first is difficult because the details of the underground plates and the friction laws between them are not known and furthermore the earthquake causes phase transitions between plates which makes for unpredictable movement. The second, we need to predict earthquake energy wave movements. Since both of these problems are so complex with many hidden variables and the equations governing the phenomenon are unknown or incomplete, deep learning can be use to learn the various hidden patterns in the data which the model can then use to forecast earthquakes into the future. \cite{fox2021earthquake}
+Earthquake prediction is a complex and old problem. There are two
+major tasks related to earthquakes. One is forecasting earthquake
+occurrences/likelihoods. Another is to predict damage once an
+earthquake does happen. The first is difficult because the details of
+the underground plates and the friction laws between them are not
+known and furthermore the earthquake causes phase transitions between
+plates which makes for unpredictable movement. The second, we need to
+predict earthquake energy wave movements. Since both of these problems
+are so complex with many hidden variables and the equations governing
+the phenomenon are unknown or incomplete, deep learning can be use to
+learn the various hidden patterns in the data which the model can then
+use to forecast earthquakes into the future. \cite{fox2021earthquake}
 
 \subsection{Energy-based averaging, the log loss equation}
 
-\TODO{This section is in progress! Enter Energy Weighted Quantities equations picture below}
+\TODO{This section is in progress! Enter Energy Weighted Quantities
+  equations picture below}
 
-This function maximizes the largest earthquake energy values for the 2 week period. 
-Magnitude averaged over the bin
-All input values and predictions are independently normalized and have a maximum modulus of 1 over all space and time values. \cite{fox2022aiforscience}
+This function maximizes the largest earthquake energy values for the 2
+week period.  Magnitude averaged over the bin All input values and
+predictions are independently normalized and have a maximum modulus of
+1 over all space and time values. \cite{fox2022aiforscience}
 
 
 \subsection{Earthquake Data turned into Spatial bag Time Series}
 
 \TODO{This section is in progress!}
 
-The data being used is the Southern California location data, between 32 to 36 lat -120 to -114 long. The data is recorded between 1950-2020. Each location point is is 0.1 by 0.1 degrees or ll km by ll km in size or 2400 points in total. The points are then put into spatial bag which are based on a bunch of different location points, necessarily nearby spatially. Each location point has a time series associated with it. The time series data holds magnitude, depth, spatial position, and time. \cite{fox2021earthquake}
+The data being used is the Southern California location data, between
+32 to 36 lat -120 to -114 long. The data is recorded between
+1950-2020. Each location point is is 0.1 by 0.1 degrees or ll km by ll
+km in size or 2400 points in total. The points are then put into
+spatial bag which are based on a bunch of different location points,
+necessarily nearby spatially. Each location point has a time series
+associated with it. The time series data holds magnitude, depth,
+spatial position, and time. \cite{fox2021earthquake}
 
-The data was accumulated into 2 week samples using energy-based averaging, the log loss equation.
+The data was accumulated into 2 week samples using energy-based
+averaging, the log loss equation.
 
 
 \TODO{provide introduction to earthquake}
@@ -369,14 +461,25 @@ Gregors MNIST benchmark results are summarized in Table~\ref{tab:mnist}.
 \subsection{Aurora}
 \label{id:anl} 
 
-The Aurora supercomputer, sponsored by the U.S. Department of Energy (DOE), is part of the Argonne Leadership Computing Facility (ACLF). It was developed with the help of industry experts from Intel and Cray. Aurora offers HPC for data analytics and AI development with a peak performance of over 2 Exaflop DP. The system is based on the HPE Cray EX supercomputer platform and offers over 9,000 compute nodes.
+The Aurora supercomputer, sponsored by the U.S. Department of Energy
+(DOE), is part of the Argonne Leadership Computing Facility (ACLF). It
+was developed with the help of industry experts from Intel and
+Cray. Aurora offers HPC for data analytics and AI development with a
+peak performance of over 2 Exaflop DP. The system is based on the HPE
+Cray EX supercomputer platform and offers over 9,000 compute nodes.
 
 Argonne National Laboratory (ANL), ... \cite{www-aurora}
 
 \subsection{Summit}
 \label{id:ornl} 
 
-The Summit supercomputer, sponsored by the U.S. Department of Energy (DOE), is located in the Oak Ridge Leadership Computing Facility (OLCF). The open science computing system is available to government, academic, and industry researchers to solve complex problems in all fields of science. The system is powered by 4,608 nodes which each house multiple IBM POWER9 CPUs and NVIDIA Volta GPUs on top of half a terabyte of coherent memory.
+The Summit supercomputer, sponsored by the U.S. Department of Energy
+(DOE), is located in the Oak Ridge Leadership Computing Facility
+(OLCF). The open science computing system is available to government,
+academic, and industry researchers to solve complex problems in all
+fields of science. The system is powered by 4,608 nodes which each
+house multiple IBM POWER9 CPUs and NVIDIA Volta GPUs on top of half a
+terabyte of coherent memory.
 
 Oak Ridge National Laboratory (ORNL), Summit \cite{www-summit}
 
@@ -384,7 +487,13 @@ Oak Ridge National Laboratory (ORNL), Summit \cite{www-summit}
 \subsection{Perlmutter}
 \label{id:nersc} 
 
-The Perlmutter supercomputer, sponsored by the U.S. Department of Energy (DOE), is located in Shyh Wang Hall at Berkeley Lab and is operated by the National Energy Research Scientific Computing Center (NERSC). The supercomputer has a 12 cabinet GPU systems with over 1,500 nodes and a 12 cabinet CPU system containing over 3,000 nodes. It is supported by 35 petabytes of all-flash storage which can move data at 5 terabytes/sec.
+The Perlmutter supercomputer, sponsored by the U.S. Department of
+Energy (DOE), is located in Shyh Wang Hall at Berkeley Lab and is
+operated by the National Energy Research Scientific Computing Center
+(NERSC). The supercomputer has a 12 cabinet GPU systems with over
+1,500 nodes and a 12 cabinet CPU system containing over 3,000
+nodes. It is supported by 35 petabytes of all-flash storage which can
+move data at 5 terabytes/sec.
 
 National Energy Research Scientific Computing Center (NERSC), ...
 \cite{www-perlmutter}
@@ -398,11 +507,16 @@ San Diego Super Computing Center, ... \cite{www-expanse}
 \subsection{University of Virginia Rivanna}
 \label{id:uva} 
 
-UVA, Rivanna, A100, RTX3090, others may not have enough memory. 
-\cite{www-rivanna}
-\TODO{description of Rivanna on web page is not accurate.}
+UVA, Rivanna, A100, RTX3090, others may not have enough memory.
+\cite{www-rivanna} \TODO{description of Rivanna on web page is not
+  accurate.}
 
-Containers are available on Rivanna through Singularity \cite{www-singularity} that can be loaded with modules \cite{www-modules}. We plan to utilize singularity, but target the formulation of the container in docker and than transform it to singularity. As singularity is installed also on other machines, we will leverage this deployment also on them. 
+Containers are available on Rivanna through Singularity
+\cite{www-singularity} that can be loaded with modules
+\cite{www-modules}. We plan to utilize singularity, but target the
+formulation of the container in docker and than transform it to
+singularity. As singularity is installed also on other machines, we
+will leverage this deployment also on them.
 
 \begin{figure}[htb]
 \resizebox{0.75\columnwidth}{!}{
@@ -418,7 +532,14 @@ Containers are available on Rivanna through Singularity \cite{www-singularity} t
 \subsection{Pearl}
 \label{id:ral} 
 
-The PEARL system, funded by the Alan Turing Institute, is hosted at the Rutherford Appleton Laboratory by the Science and Technology Facilities Council (STFC). It was developed for the advancement of AI and Machine Learning research with large-scale scientific datasets, already contributing to the fields of materials, environmental and life sciences, and astronomy. It is comprised of two NVIDIA DGX2 nodes, 32 GPUs, 3TB of system memory, 1TB of GPU memory, and 600TB of high-speed storage. 
+The PEARL system, funded by the Alan Turing Institute, is hosted at
+the Rutherford Appleton Laboratory by the Science and Technology
+Facilities Council (STFC). It was developed for the advancement of AI
+and Machine Learning research with large-scale scientific datasets,
+already contributing to the fields of materials, environmental and
+life sciences, and astronomy. It is comprised of two NVIDIA DGX2
+nodes, 32 GPUs, 3TB of system memory, 1TB of GPU memory, and 600TB of
+high-speed storage.
 
 Rutherford Appleton Laboratory (RAL), UK 
 Pearl \cite{www-pearl-1}
@@ -540,50 +661,61 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 
 \section*{Biographies}
 
-\TODO{wrapfigure does somehow not work in this template}
 
-{\bf Thomas Butler} is a Graduate Student at University of Virginia's
-School of Data Science. His undergraduate degree is in Biomedical
-engineering. He has over eight years of experience in the Infertility
-field helping patients, jointly running a Andrology lab, and
-contributing research to advance the field through joint research on
-how AMH effects pregnancy outcomes and sperm antibodies effect PSA. He
-has a certificate in Data Analytics from Georgia Institute of
-Technology.
+\newcommand{\BIOFIG}[3]{%
 
-{\bf Robert Knuuti} is a Graduate Student at University of Virginia's
-School of Data Science. He has over 10 years experience in system
-architecture and software engineering, and specializes in Development
-Operations and Cloud Computing. He has constructed air gapped
-Continuous Integration and Continuous Delivery systems for multiple
-organizations each supporting more than 100 developers and has
-facilitated the construction of repeatable, tractable builds for users
-of these systems.
+  {\bf #2} #3
+  %\begin{wrapfigure}[l]{.2\columnwidth}
+  \includegraphics[width=.2\columnwidth]{#1}%
+  %\end{wrapfigure}
+}
 
-{\bf Jake Kolessar} {is a Graduate Student at the University of
-  Virginia's School of Data Science. He has a background in mechanical
-  engineering and 2 years of experience as a Modeling, Simulation and
-  Analysis Engineer. He has supported the software design and
-  development of modeling capabilities for event simulation products
-  as well as the integration of models into the simulation framework.}
+\BIOFIG{images/bio/gregor.png}{Thomas Butler}{is a Graduate Student at
+  University of Virginia's School of Data Science. His undergraduate
+  degree is in Biomedical engineering. He has over eight years of
+  experience in the Infertility field helping patients, jointly
+  running a Andrology lab, and contributing research to advance the
+  field through joint research on how AMH effects pregnancy outcomes
+  and sperm antibodies effect PSA. He has a certificate in Data
+  Analytics from Georgia Institute of Technology.}
 
-{\bf Geoffrey C. Fox}
-\TODO{Geoffery: fill out}
+\BIOFIG{images/bio/gregor.png}{Robert Knuuti}{is a Graduate Student at
+  University of Virginia's School of Data Science. He has over 10
+  years experience in system architecture and software engineering,
+  and specializes in Development Operations and Cloud Computing. He
+  has constructed air gapped Continuous Integration and Continuous
+  Delivery systems for multiple organizations each supporting more
+  than 100 developers and has facilitated the construction of
+  repeatable, tractable builds for users of these systems.}
 
+\BIOFIG{images/bio/gregor.png}{Jake Kolessar}{is a Graduate Student at
+  the University of Virginia's School of Data Science. He has a
+  background in mechanical engineering and 2 years of experience as a
+  Modeling, Simulation and Analysis Engineer. He has supported the
+  software design and development of modeling capabilities for event
+  simulation products as well as the integration of models into the
+  simulation framework.}
+
+\BIOFIG{images/bio/gregor.png}{Geoffrey C. Fox}{TBD TBD TBD TBD TBD
+  TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD
+  TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD
+  TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD
+  TBD TBD TBD TBD TBD TBD TBD TBD}
 
 %\begin{wrapfigure}{r}{0.25\columnwidth}
 %\includegraphics[width=0.24\columnwidth]{images/bio/gregor.png}
 %\end{wrapfigure}
 
-{\bf Gregor von Laszewski} is a Research Professor at University of
-Virginia. He has more than 30 years of experience in parallel and
-distributed computing. Selected research organizations he worked in
-include NASA, Argonne National Laboratory, Indiana University. He is
-proud to have been contributing members of research teams that
-invented hybrid parallel genetic algorithms, Grid computing, and the
-first large scale academic hybrid cloud, as well as the larges
-scientific bibliometric analysis of XSEDE in the world.
 
+\BIOFIG{images/bio/gregor.png}{Gregor von Laszewski}{is a Research
+  Professor at University of Virginia.  He has more than 30 years of
+  experience in parallel and distributed computing.  Selected research
+  organizations he worked at include NASA, Argonne National
+  Laboratory, Indiana University. He is proud to have been
+  contributing members of research teams that invented hybrid parallel
+  genetic algorithms, Grid computing, and the first large scale
+  academic hybrid cloud, as well as the larges scientific bibliometric
+  analysis of XSEDE in the world.}
 
 
 
@@ -614,16 +746,33 @@ Things to do:
     \item Read up on TFT \cite{www-onnen2021}
     \item Become familiar with the Attention Paper \cite{vaswani2017attention}
     \item Learn how to selfdeploy jupyterlab \cite{www-jupyterlab}
-    \item Begin to learn about papermill \cite{www-papermill} \TODO{Rivanna's core configurations might be a bit limited on this front.  They do provide multiple versions of software (such as py2.7 and py3.8), but we may need to get permission to do something in userspace if we need to be very specific on a version of python.  Do we want to look into using tox, conda, or leave this up to the container ecosystem to solve?}
-    \TODO{Gregor: add how to use conda and modules to switch python versions}
+
+    \item Begin to learn about papermill \cite{www-papermill}
+      \TODO{Rivanna's core configurations might be a bit limited on
+        this front.  They do provide multiple versions of software
+        (such as py2.7 and py3.8), but we may need to get permission
+        to do something in userspace if we need to be very specific on
+        a version of python.  Do we want to look into using tox,
+        conda, or leave this up to the container ecosystem to solve?}
+
+      \TODO{Gregor: add how to use conda and modules to switch python versions}
     \item virtualenv on rivanna for a particular python version.
     \item depends on Tensorflow
-    \TODO{Below this line are objectives or targets to take the current modeling solution and mature it for other platforms / ecosystems.  Rivanna uses Lua's lmod ecosystem for jailing a process, and anaconda uses solved environments for dependencies that extend beyond just python modules.}
-    \item Familiarize yourself with Rivanna's modules \cite{www-modules}  and conda \cite{www-conda} environments.
+      
+    \TODO{Below this line are objectives or targets to take the
+      current modeling solution and mature it for other platforms /
+      ecosystems.  Rivanna uses Lua's lmod ecosystem for jailing a
+      process, and anaconda uses solved environments for dependencies
+      that extend beyond just python modules.}
+
+  \item Familiarize yourself with Rivanna's modules \cite{www-modules}  and conda \cite{www-conda} environments.
     \item pytorch \cite{www-pytorch}
     \TODO{There is interest in comparing pytorch and tensoflow}
     \item horovod \cite{www-horovod}
-    \TODO{MLCommons project that can target a few platforms using a YAML contract.  Once we solve the target environment, we can likely target porting this way.}
+
+      \TODO{MLCommons project that can target a few platforms using a
+        YAML contract.  Once we solve the target environment, we can
+        likely target porting this way.}
     
     \item \mlcube{} \cite{www-mlcube} 
 \end{itemize}
@@ -647,7 +796,7 @@ Dates covered: Jan 27 - Feb 23rd
 Due: Feb 24th, 2022
 
 \begin{itemize}
-\item Reviewed background information \footnote{\url{https://github.com/Data-ScienceHub/mlcommons-science/issues/1}}
+\item Reviewed background information \GITISSUE{1}
     \begin{itemize}
     \item Earthquake Nowcasting with Deep Learning
     \item MLCommons Benchmark Presentation
@@ -656,7 +805,7 @@ Due: Feb 24th, 2022
     \item Learning on Temporal Fusion Transformers
     \item MLCommons and AI for Science illustrated by Deep Learning for Geospatial Time Series
     \end{itemize}
-\item Reviewed background technologies \footnote{\url{https://github.com/Data-ScienceHub/mlcommons-science/issues/2}}
+\item Reviewed background technologies \GITISSUE{2}
     \begin{itemize}
     \item lmod - lua module and environment management (used on rivanna)
     \item pip / conda env - python package management
@@ -671,11 +820,20 @@ Due: Feb 24th, 2022
     \begin{itemize}
     \item added references to references.bib in overleaf
     \end{itemize}
-\item Revised Intro to Python guide for conda installations so it doesn't interfere with pyenv or other shell commands.\footnote{\url{https://github.com/cloudmesh-community/book/pull/574}} \footnote{\url{https://github.com/cloudmesh-community/book/pull/575}}
-\item Solved conda environment and requirements.txt for colab notebook
-\footnote{\url{https://github.com/Data-ScienceHub/mlcommons-science/issues/12}} \footnote{\url{https://github.com/laszewsk/mlcommons/pull/1}} \footnote{\url{https://github.com/laszewsk/mlcommons/pull/3}}
+
+  \item Revised Intro to Python guide for conda installations so it
+    doesn't interfere with pyenv or other shell
+    commands.\footnote{\url{https://github.com/cloudmesh-community/book/pull/574}} \footnote{\url{https://github.com/cloudmesh-community/book/pull/575}}
+
+  \item Solved conda environment and requirements.txt for colab notebook
+
+    \GITISSUE{12},
+    \GITPULL{1},
+    \GITPULL{3}.
+  
 \item build docker container image that can run python 3.9.7 and conda
 \item verified access to GPU allocations in Rivanna
+
 \end{itemize}
 
 \subsection{Progress Report B}

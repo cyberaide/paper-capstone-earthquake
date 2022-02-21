@@ -38,3 +38,7 @@ dot:
 
 info:
 	python bin/sysinfo.py
+
+manual:
+	wget -O rivanna-manual.html https://laszewsk.github.io/mlcommons/docs/tutorials/_print
+	wget https://github.com/laszewsk/mlcommons/blob/main/www/content/en/docs/tutorials/rivanna.md -O rivanna-manual.md 

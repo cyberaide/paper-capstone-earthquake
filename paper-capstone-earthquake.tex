@@ -8,6 +8,7 @@
 \usepackage{adjustbox}
 \usepackage{makecell} 
 \usepackage{ifthen}
+\usepackage[smartEllipses]{markdown}
 
 \newcommand{\TODO}[1]{\todo[inline]{#1}}
 %\providecommand{\mlperf}{MLPerf\texttrademark{}}
@@ -659,9 +660,6 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 \end{table*}
 
 
-\begin{acks}
-\TODO{Geoffrey: please add acknowledgement for funding, other acks}
-\end{acks}
 
 %
 % THIS SECTION MAY NOT BE COPIED INTO ANOTHER PAPER WITHOUT MAKING GREGOR VON LASZEWSKI COAUTHOR
@@ -670,9 +668,13 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 
 \input{machines}
 
+\begin{acks}
+\TODO{Geoffrey: please add acknowledgement for funding, other acks}
+\end{acks}
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{paper-capstone-earthquake}
+
 
 \section*{Biographies}
 
@@ -736,6 +738,10 @@ The following manuals have been developed by the team:
 \end{itemize}
 
 \TODO{There are more we developed in the web page} 
+
+
+\markdownInput{rivanna-manual.md}
+
 
 \clearpage 
 

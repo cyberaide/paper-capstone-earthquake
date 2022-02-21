@@ -1,9 +1,11 @@
 FILE=paper-capstone-earthquake
 
+O{TIONS=--shell-escape
+
 all: ${FILE}.pdf
 
 d: clean
-	pdflatex ${FILE}
+	pdflatex  ${FILE}
 	biber ${FILE}
 	pdflatex ${FILE}
 	pdflatex ${FILE}
@@ -31,7 +33,7 @@ watch: ${FILE}.pdf
 clean:
 	latexmk -CA -bibtex
 	rm -f ${FILE}.run.xml
-	rm -f *.tdo
+	rm -rf *.tdo *.err *.lua *.out _*
 
 dot:
 	dot -Tpdf -o images/singularity.pdf images/singularity.dot
@@ -40,5 +42,5 @@ info:
 	python bin/sysinfo.py
 
 manual:
-	wget -O rivanna-manual.html https://laszewsk.github.io/mlcommons/docs/tutorials/_print
-	wget https://github.com/laszewsk/mlcommons/blob/main/www/content/en/docs/tutorials/rivanna.md -O rivanna-manual.md 
+	wget -O rivanna-manual.md  https://raw.githubusercontent.com/laszewsk/mlcommons/main/www/content/en/docs/tutorials/rivanna.md
+	pandoc -o rivanna-manual-DONT.md  rivanna-manual.md   

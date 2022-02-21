@@ -8,7 +8,8 @@
 \usepackage{adjustbox}
 \usepackage{makecell} 
 \usepackage{ifthen}
-\usepackage[smartEllipses]{markdown}
+% \usepackage[smartEllipses]{markdown}
+\usepackage{comment}
 
 \newcommand{\TODO}[1]{\todo[inline]{#1}}
 %\providecommand{\mlperf}{MLPerf\texttrademark{}}
@@ -16,6 +17,7 @@
 \providecommand{\mlperf}{MLPerf}
 \providecommand{\mlcube}{MLCube}
 
+\newcommand*\rot{\rotatebox{90}}
 \newcommand{\BIOFIG}[3]{%
 \parindent 0pt%
 \setlength{\intextsep}{6pt}%
@@ -40,9 +42,7 @@
   2022]{MLCommons Earthquake Science Benchmark}{Jan. 22 -- Aug. 31
   2022}{Charlotsville, VA, USA}
 
-\acmBooktitle{Woodstock '18:
-  ACM Symposium on Neural Gaze Detection, June 03--05, 2018,
-  Woodstock, NY}
+\acmBooktitle{Report for the MLCommons Science Working Group in collaboration with University of Virginia, May 2022, Charlottesville, VA}
 
 \acmPrice{}
 \acmISBN{}
@@ -135,7 +135,7 @@ TBD
 
 
 \begin{CCSXML}
-<ccs2012>
+<mdcs2012>
  <concept>
   <concept_id>10010520.10010553.10010562</concept_id>
   <concept_desc>Computer systems organization~Embedded systems</concept_desc>
@@ -173,6 +173,26 @@ TBD
 
 \TODO{Fix the classification. See  \url{see http://dl.acm.org/ccs.cfm}} 
 
+\begin{comment}
+\parindent 0pt {\bf Citation:}
+
+\begin{footnotesize}
+\begin{verbatim}@TechReport{mlcommons-eartquake,
+  author = 	 {Thomas Butler and Robert Knuuti and
+              Jake Kolessar and Geoffrey C. Fox and
+              Gregor von Laszewski and Judy Fox},
+  title = 	 {MLCommons Earthquake Science Benchmark},
+  institution =  {MLCommons Science Working Group},
+  year = 	 2022,
+  type = 	 {Report by University of Virginia},
+  address = 	 {Charlottesville, VA},
+  month = 	 may,
+  note = 	 {The order of the authors and url location may change},
+  annote = 	 {Version: draft},
+  url = {https://github.com/cyberaide/paper-capstone-mlcommons}
+}\end{verbatim}
+\end{footnotesize}
+\end{comment}
 
 \section{Introduction}
 
@@ -627,38 +647,69 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
     \centering
 %\begin{adjustbox}{angle=90}
 \begin{adjustbox}{max width=\textwidth}
-    \begin{tabular}{|r|l|l|r|l|l|l|l|l|}
+    \begin{tabular}{|r|l|l|l|r|r|r|l|r|l|l|l|}
         \hline
-        See also & Organization   & Machine                         & Processors    & GPUs             & \makecell{Memory\\/Device} &  \makecell{GPU\\/Device} & \makecell{No. of\\ nodes} & Commissioned \\ 
+        See also & 
+        Organization   & 
+        Machine                         &
+        OS & 
+        \rot{Processors~} &
+        \rot{Core~} & 
+        \rot{Threads~} & 
+        GPUs             & 
+        \rot{\makecell{Memory\\/Device}} &  
+        \rot{GPU/Device} & 
+        \rot{No. of nodes~} & 
+        Commissioned \\ 
         \hline
         \hline
          Table \ref{tab:gcompute}   & 
          Gregor    & 
          5950X   &  
+         Ubuntu 20.04&
          1 &   
+         16 & 
+         32 &
          \href{https://www.gigabyte.com/Graphics-Card/GV-N307TGAMING-OC-8GD#kf}{GIGABYTE Gaming RTX 3070TI}  & 
          8GB & 
-         1 & 
-         1 & 
+         2 &
+         1 &
          Sep 2021   \\
             & 
+            &
+            &
+            &
             & 
             &  
             &   
          \href{https://rog.asus.com/us/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx3090-o24g-gaming-model/}{ASUS ROG Strix RTX 3090} & 
          24GB & 
-         1 & 
-         1 & 
+         & 
+         & 
          Feb 2022   \\
          \hline
-         \ref{sec:tcomputer}   & Thomas.A  & i7-8750H &  1 &   NVIDIA GeForce RTX 2070 with Max-Q Design  & 16GB & 1 & 1 & 2019   \\
+         \ref{sec:tcomputer}   & Thomas.A  & i7-8750H & Win11 Pro  & 1 &   ? & ? & NVIDIA GeForce RTX 2070 with Max-Q Design  & 16GB & 1 & 1 & 2019   \\
          \hline
-         \ref{sec:t2computer}   & Thomas.B  & i7-7700HQ &  1 &   NVIDIA GeForce GTX 1060  & 16GB & 1 & 1 & 2017   \\
+         \ref{sec:t2computer}   & Thomas.B  & i7-7700HQ &  Win11 Pro &1 & ? & ? &  NVIDIA GeForce GTX 1060  & 16GB & 1 & 1 & 2017   \\
+         \hline
+         Table \ref{tab:rcompute} & 
+         Rob & 
+         5900HX & 
+         Win11 Pro & 
+         1 & 
+         8 & 
+         16 & 
+         NVIDIA RTX 3080 &  
+         16GB & 
+         1 & 
+         1 & 
+         11/25/2021 \\
          \hline
     \end{tabular}
     \end{adjustbox}
 \end{table*}
 
+\input{machines}
 
 
 %
@@ -687,7 +738,7 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
   and sperm antibodies effect PSA. He has a certificate in Data
   Analytics from Georgia Institute of Technology.}
 
-\BIOFIG{images/bio/gregor.png}{Robert Knuuti}{is a Graduate Student at
+\BIOFIG{images/bio/rob.png}{Robert Knuuti}{is a Graduate Student at
   University of Virginia's School of Data Science. He has over 10
   years experience in system architecture and software engineering,
   and specializes in Development Operations and Cloud Computing. He
@@ -734,13 +785,14 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 The following manuals have been developed by the team:
 
 \begin{itemize}
-    \item Introduction to Python \cite{las-intro-python}
+    \item Introduction to Python \cite{las-intro-python}, Gregor von Laszewski, with contributions from Robert Knuuti
+    \item \href{https://laszewsk.github.io/mlcommons/docs/tutorials/rivanna/}{Running GPU Batch jobs on Rivanna} Gregor von Laszewski, Robert Knuuti
 \end{itemize}
 
 \TODO{There are more we developed in the web page} 
 
 
-\markdownInput{rivanna-manual.md}
+% \markdownInput{rivanna-manual}
 
 
 \clearpage 

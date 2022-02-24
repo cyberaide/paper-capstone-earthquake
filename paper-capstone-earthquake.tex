@@ -350,7 +350,19 @@ the phenomenon are unknown or incomplete, deep learning can be use to
 learn the various hidden patterns in the data which the model can then
 use to forecast earthquakes into the future. \cite{fox2021earthquake}
 
+\TODO{provide introduction to earthquake}
+
+\TODO{Review how these papers contribute to introduction}
+
+\begin{itemize}
+    \item Review IEEE Presentation \cite{fox2022aiforscience}
+    \item Review Fox paper \cite{fox2021earthquake}
+\end{itemize}
+
+\section{Earthquake Data}
+
 \subsection{Energy-based averaging, the log loss equation}
+
 
 \TODO{This section is in progress! Enter Energy Weighted Quantities
   equations picture below}
@@ -376,16 +388,6 @@ spatial position, and time. \cite{fox2021earthquake}
 
 The data was accumulated into 2 week samples using energy-based
 averaging, the log loss equation.
-
-
-\TODO{provide introduction to earthquake}
-
-\TODO{Review how these papers contribute to introduction}
-
-\begin{itemize}
-    \item Review IEEE Presentation \cite{fox2022aiforscience}
-    \item Review Fox paper \cite{fox2021earthquake}
-\end{itemize}
 
 \section{Timeseries Earthquake Prediction}
 
@@ -669,11 +671,9 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
          1 & 
          Feb 2022   \\
          \hline
-         \ref{sec:tcomputer}   & Thomas.A  & i7-8750H &  1 &   NVIDIA GeForce RTX 2070 with Max-Q Design  & 16GB & 1 & 1 & 2019   \\
+         Table \ref{tab:tcompute}   & Thomas.A  & i7-8750H &  1 & \href{https://www.gigabyte.com/Laptop/AERO-15--RTX-20-Series#kf}{NVIDIA GeForce RTX 2070 with Max-Q Design} & 16GB & 1 & 1 & Jan 2019   \\
          \hline
-         \ref{sec:t2computer}   & Thomas.B  & i7-7700HQ &  1 &   NVIDIA GeForce GTX 1060  & 16GB & 1 & 1 & 2017   \\
-         \hline
-         Table \ref{tab:rcompute} & Rob.K & AMD Ryzen 9 5900HX & 1 &  NVidia RTX 3080 &  16GB & 1 & 1 & 11/25/2021 \\
+         Table \ref{tab:rcompute} & Rob.K & AMD Ryzen 9 5900HX & 1 &  \href{https://rog.asus.com/us/laptops/rog-strix/2021-rog-strix-scar-15-series/}{NVidia RTX 3080} &  16GB & 1 & 1 & 11/25/2021 \\
          \hline
     \end{tabular}
     \end{adjustbox}
@@ -690,7 +690,6 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{machines}
 
 
 \bibliographystyle{ACM-Reference-Format}
@@ -698,7 +697,7 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
 
 \section*{Biographies}
 
-\BIOFIG{images/bio/gregor.png}{Thomas Butler}{is a Graduate Student at
+\BIOFIG{images/bio/tom.png}{Thomas Butler}{is a Graduate Student at
   University of Virginia's School of Data Science. His undergraduate
   degree is in Biomedical engineering. He has over eight years of
   experience in the Infertility field helping patients, jointly
@@ -724,11 +723,15 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
   simulation products as well as the integration of models into the
   simulation framework.}
 
-\BIOFIG{images/bio/fox.png}{Geoffrey C. Fox}{TBD TBD TBD TBD TBD
-  TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD
-  TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD
-  TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD TBD
-  TBD TBD TBD TBD TBD TBD TBD TBD}
+\BIOFIG{images/bio/fox.png}{Geoffrey C. Fox}{is a computational and data 
+  science professor for University of Virginia. He has over 50 years of 
+  experience in 'big data' and high-performance computing. Through his 
+  career, he has contributed to these fields in both research and education 
+  the next generation. In 2019 he received the ACM-IEEE CS Ken Kennedy 
+  award for his work in parallel computing methodology, algorithms and 
+  software, data analysis, and how these interface with broad classes of 
+  applications. His current research interests are exploring the various 
+  use cases of neural networks.}
 
 %\begin{wrapfigure}{r}{0.25\columnwidth}
 %\includegraphics[width=0.24\columnwidth]{images/bio/gregor.png}
@@ -863,6 +866,8 @@ Due: Feb 24th, 2022
   
 \item build docker container image that can run python 3.9.7 and conda
 \item verified access to GPU allocations in Rivanna
+\item created a portable version of python 3.10.2 that can run on Rivanna \GITPULL{8}
+\item implemented cloudmesh-data (\href{https://github.com/cloudmesh/cloudmesh-data/pull/1}{cloudmesh/cloudmesh-data PR 1}, \href{https://github.com/cloudmesh/cloudmesh-data/pull/3}{cloudmesh/cloudmesh-data PR #3})
 
 \end{itemize}
 

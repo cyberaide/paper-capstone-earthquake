@@ -363,18 +363,6 @@ use to forecast earthquakes into the future. \cite{fox2021earthquake}
 
 \section{Earthquake Data}
 
-\subsection{Energy-based averaging, the log loss equation}
-
-
-\TODO{This section is in progress! Enter Energy Weighted Quantities
-  equations picture below}
-
-This function maximizes the largest earthquake energy values for the 2
-week period.  Magnitude averaged over the bin All input values and
-predictions are independently normalized and have a maximum modulus of
-1 over all space and time values. \cite{fox2022aiforscience}
-
-
 \subsection{Earthquake Data turned into Spatial bag Time Series}
 
 \TODO{This section is in progress!}
@@ -386,10 +374,44 @@ km in size or 2400 points in total. The points are then put into
 spatial bag which are based on a bunch of different location points,
 necessarily nearby spatially. Each location point has a time series
 associated with it. The time series data holds magnitude, depth,
-spatial position, and time. \cite{fox2021earthquake}
+spatial position, and time. The data was accumulated into 2 week samples. 
+\cite{fox2021earthquake}
 
-The data was accumulated into 2 week samples using energy-based
-averaging, the log loss equation.
+\subsection{Energy-based averaging, the log loss equation}
+
+\TODO{This section is in progress!}
+
+The data was filtered so only significant quakes were considered 
+(magnitude > 3.29). The Log Energy equation (Figure 1) was used for 
+the magnitude of significant quakes inside a 2 week period.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{images/Equations/log_energy.png}
+    \caption{Log Energy \cite{fox2021earthquake}}
+\end{figure}
+
+The Energy Weighting equation (Figure 2) was used to average depth from quakes.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{images/Equations/Q_bin.png}
+    \caption{Energy Weighted \cite{fox2021earthquake}}
+\end{figure}
+
+The Multiplicity equation (Figure 3) is used to count the number of 
+occurrences of significant earthquakes in a 2 week period. 
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{images/Equations/Multiplicity_bin.png}
+    \caption{Multiplicity \cite{fox2021earthquake}}
+\end{figure}
+
+This function maximizes the largest earthquake energy values for the 2
+week period.  Magnitude averaged over the bin, all input values and
+predictions are independently normalized and have a maximum modulus of
+1 over all space and time values. \cite{fox2022aiforscience}
 
 \section{Timeseries Earthquake Prediction}
 
@@ -488,6 +510,7 @@ Gregors MNIST benchmark results are summarized in Table~\ref{tab:mnist}.
         Rivanna V100 & 0m43.160s & 0m15.510s & 0m6.894s & 470.82.01 & 11.4 & Tesla V100-SXM2 & & Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz & Q3  2014 \\ \hline
         Rivanna K80 & 0m57.588s & 0m20.322s & 0m9.612s & 470.82.01 & 11.4 & NVIDIA TESLA K80 & & Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz & Q3  2014 \\ \hline
         Rivanna Frontend & 1m11.535s & 1m00.780s & 0m10.352s & N/A & N/A & N/A & & Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz & Q3  2014 \\ \hline
+        Rob K & 
     \end{tabular}
     \end{adjustbox}
 \end{table*}
@@ -543,7 +566,7 @@ Center (SDSC) ....
 
 University of Virginia Rivanna
   
-\TODO{Rivann description is inomplete}
+\TODO{Rivanna description is incomplete}
 
 UVA, Rivanna, A100, RTX3090, others may not have enough memory.
 \cite{www-rivanna} \TODO{description of Rivanna on web page is not

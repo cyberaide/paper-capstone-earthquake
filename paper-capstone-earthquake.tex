@@ -259,7 +259,7 @@ level, creating a performance boost when these prepared instructions
 are encountered\cite{cheong1997optimizer}.  While these measures are
 still of great importance, they do not reflect the performance of
 systems based on non-deterministic measures that exist in nature.
-This makes benchmarking using a scientific dataset an ideal candidate
+This makes benchmarking using a scientific dataframe an ideal candidate
 for calculating performance, as there's an inherit randomness that's
 difficult to "game" this system and build predictions.  This is
 especially true when attempting to predict the next occurrence of an
@@ -279,11 +279,11 @@ common thing to model in industry \cite{www-mlcommons-science}.
 The primary goal of MLCommons Science Research is to develop optimal
 methods to improve both speed and efficiency of scientific
 outcomes. This is done by measure how different models perform on
-different scientific datasets, in particular score the models based on
+different scientific dataframes, in particular score the models based on
 how well they do on scientific discovery. This could be anywhere from
 accuracy of a model to time to reach specific accuracy target when new
 data is introduced. In general, how well each model matches the goals
-of that particular scientific field. By using verified datasets
+of that particular scientific field. By using verified dataframes
 following best standardized practice on how to build and exchange
 models using the reference materials on benchmarked machines,
 knowledge can flow more easily and freely between various
@@ -291,9 +291,9 @@ researchers. By having these standard methods, both the monetary cost
 and time can be reduced between researcher regardless of their
 speciality.
 
-Currently MLCommons Science Research has four datasets based on
+Currently MLCommons Science Research has four dataframes based on
 climate, material science, medicine and earthquakes with a fifth
-dataset on plasma physics being added soon. Each dataset has their own
+dataframe on plasma physics being added soon. Each dataframe has their own
 method used to solve their scientific problem
 \cite{www-mlcommons-science}.
 
@@ -363,9 +363,7 @@ use to forecast earthquakes into the future. \cite{fox2021earthquake}
 
 \section{Earthquake Data}
 
-\subsection{Earthquake Data turned into Spatial bag Time Series}
-
-\TODO{This section is in progress!}
+\subsection{Spatial bag Time Series}
 
 The data being used is the Southern California location data, between
 32 to 36 lat -120 to -114 long. The data is recorded between
@@ -377,13 +375,13 @@ associated with it. The time series data holds magnitude, depth,
 spatial position, and time. The data was accumulated into 2 week samples. 
 \cite{fox2021earthquake}
 
-\subsection{Energy-based averaging, the log loss equation}
+\subsection{Averaging Data equations}
 
-\TODO{This section is in progress!}
-
-The data was filtered so only significant quakes were considered 
-(magnitude > 3.29). The Log Energy equation (Figure 1) was used for 
-the magnitude of significant quakes inside a 2 week period.
+The data was filtered so only quakes with a magnitude > 3.29, or significant 
+quakes, were considered. The Log Energy equation (Figure 1) was used for 
+the magnitude of significant quakes inside a 2 week period. The Log Energy 
+equation maximizes the largest earthquake energy values for the 2 week period. 
+\cite{fox2021earthquake}
 
 \begin{figure}[htp]
     \centering
@@ -408,10 +406,14 @@ occurrences of significant earthquakes in a 2 week period.
     \caption{Multiplicity \cite{fox2021earthquake}}
 \end{figure}
 
-This function maximizes the largest earthquake energy values for the 2
-week period.  Magnitude averaged over the bin, all input values and
-predictions are independently normalized and have a maximum modulus of
-1 over all space and time values. \cite{fox2022aiforscience}
+All input values and predictions are independently normalized and have a maximum 
+modulus of 1 over all space and time values. \cite{fox2022aiforscience}
+
+\subsection{Fault Groupings}
+
+\TODO{Work in Progress}
+
+Grouped faults empirically into 36 families by proximity. #Show picture of groupings. Used 4 different space filling curves to fill in empty spaces to get graph into a 2d structure.
 
 \section{Timeseries Earthquake Prediction}
 
@@ -487,6 +489,26 @@ predictions are independently normalized and have a maximum modulus of
 %    Commons. (\url{https://goo.gl/VLCRBB}).}
 %  \Description{A woman and a girl in white dresses sit in an open car.}
 % \end{figure}
+
+\subsection{Accuracy Metrics}
+
+\TODO{either put plots here or reference where they are}
+
+The models are measured according to two accuracy metrics, the Nash Sutcliffe Efficiency 
+NSE and a visualization of predicted verse observed earthquake data. NSE measures 
+the variation difference between observed and predicted data over time. $Q^t_m$ is the 
+model prediction at time t, $Q^t_o$ is observed value at time t, $\overline{Q_o}$ is the 
+mean observed value over all time. \cite{fox2021earthquake}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{images/Equations/NSE_equation.png}
+    \caption{Nash Sutcliffe Efficiency \cite{fox2021earthquake}}
+\end{figure}
+
+
+The results are presented as the normalized NSE or NNSE. NNSE = 1/(2-NSE)
+The values of NNSE ranges between 0 and 1 with 0 = mean, the higher the value the better the fit. \cite{fox2021earthquake}
 
 \section{Benchmarks}
 

@@ -1,5 +1,7 @@
 \PassOptionsToPackage{hyphens}{url}
 \documentclass[sigplan,screen]{acmart}
+
+\usepackage{amsmath}
 \usepackage{todonotes}
 \usepackage{graphicx}
 \usepackage{wrapfig}
@@ -10,6 +12,7 @@
 \usepackage{ifthen}
 % \usepackage[smartEllipses]{markdown}
 \usepackage{comment}
+
 
 \newcommand{\TODO}[1]{\todo[inline]{#1}}
 %\providecommand{\mlperf}{MLPerf\texttrademark{}}
@@ -366,54 +369,80 @@ use to forecast earthquakes into the future. \cite{fox2021earthquake}
 \subsection{Spatial bag Time Series}
 
 The data being used is the Southern California location data, between
-32 to 36 lat -120 to -114 long. The data is recorded between
-1950-2020. Each location point is is 0.1 by 0.1 degrees or ll km by ll
-km in size or 2400 points in total. The points are then put into
+$32$ to $36$ lat $-120$ to $-114$ long. The data is recorded between
+$1950-2020$. Each location point is $0.1$ by $0.1$ degrees or $11 km$ by $11
+km$ in size or $2400$ points in total. The points are then put into
 spatial bag which are based on a bunch of different location points,
 necessarily nearby spatially. Each location point has a time series
 associated with it. The time series data holds magnitude, depth,
-spatial position, and time. The data was accumulated into 2 week samples. 
+spatial position, and time. The data was accumulated into $2$ week samples. 
 \cite{fox2021earthquake}
 
 \subsection{Averaging Data equations}
 
-The data was filtered so only quakes with a magnitude > 3.29, or significant 
-quakes, were considered. The Log Energy equation (Figure 1) was used for 
-the magnitude of significant quakes inside a 2 week period. The Log Energy 
-equation maximizes the largest earthquake energy values for the 2 week period. 
-\cite{fox2021earthquake}
+The data was filtered so only quakes with a $magnitude > 3.29$, or significant 
+quakes, were considered. The Log Energy equation (\ref{eq:Log Energy}) was used for 
+the magnitude of significant quakes inside a $2$ week period. The Log Energy 
+equation maximizes the largest earthquake energy values for the $2$ week period
+\cite{fox2021earthquake}.
 
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.75\columnwidth]{images/Equations/log_energy.png}
-    \caption{Log Energy \cite{fox2021earthquake}}
-\end{figure}
 
-The Energy Weighting equation (Figure 2) was used to average depth from quakes.
+    \begin{equation}
+    m_{bin} = \log (Energy) = \frac{1}{1.5} \log_{10} \sum\limits^{Events}_{in\ bin} 10^{1.5m_{event}}
+    \label{eq:Log Energy}
+    \end{equation}
+    
+\TODO{Gregor suggests to change the event to e(1.5m) Gregor's suggestion just to show it see \ref{eq:log-energy-gregor}. possibly we should use  $in\ bin(1.5m)$ and than just $10^e$ ?. However we need to confirm.}
 
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.75\columnwidth]{images/Equations/Q_bin.png}
-    \caption{Energy Weighted \cite{fox2021earthquake}}
-\end{figure}
 
-The Multiplicity equation (Figure 3) is used to count the number of 
-occurrences of significant earthquakes in a 2 week period. 
+    \begin{equation}
+    m_{bin} = \log (Energy) = \frac{1}{1.5} \log_{10} \sum\limits^{Events}_{e \in bin} 10^{e(1.5m)}
+    \label{eq:log-energy-gregor}
+    \end{equation}
+    
+    \begin{equation}
+    m_{bin} = \log (Energy) = \frac{1}{1.5} \log_{10} \sum\limits^{Events}_{e \in bin(1.5m)} 10^e
+    \label{eq:log-energy-gregor}
+    \end{equation}
+    
+The Energy Weighting equation (\ref{eq:Energy Weighted}) was used to average depth from quakes \cite{fox2021earthquake}.
 
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.75\columnwidth]{images/Equations/Multiplicity_bin.png}
-    \caption{Multiplicity \cite{fox2021earthquake}}
-\end{figure}
+    \begin{equation}
+    Energy\ weighted\ Quantity \ Q_{bin} = \dfrac{\sum\limits^{Events}_{in\ bin} 10^{1.5m_{event}}Q_{event}}{\sum\limits^{Events}_{in\ bin}10^{1.5m_{event}}}
+    \label{eq:Energy Weighted}
+    \end{equation}
+
+The Multiplicity equation (\ref{eq:Multiplicity}) is used to count the number of 
+occurrences of significant earthquakes in a 2 week period \cite{fox2021earthquake}. 
+
+    \begin{equation}
+    Multiplicity_{bin} = \sum^{Events}_{in\ bin} Multiplicity_{event}
+    \label{eq:Multiplicity}
+    \end{equation}
+
 
 All input values and predictions are independently normalized and have a maximum 
-modulus of 1 over all space and time values. \cite{fox2022aiforscience}
+modulus of $1$ over all space and time values. \cite{fox2022aiforscience}
 
 \subsection{Fault Groupings}
 
-\TODO{Work in Progress}
+There are hundreds of faults in the $32$ to $36$ lat $-120$ to $-114$ long area. To simplify these faults, this area was taken as a $2d$ structure spit into $2400$ individual pixels. These pixels were grouped empirically into $36$ families by proximity using $4$ different space filling curves to fill in empty spaces.
 
-Grouped faults empirically into 36 families by proximity. #Show picture of groupings. Used 4 different space filling curves to fill in empty spaces to get graph into a 2d structure.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/Fault_groupings.png}
+    \caption{Fault Regions}
+\end{figure}
+
+\subsection{Training - Test split}
+
+From the $2400$ pixels in the $2d$ image, the $500$ most active pixels were picked. These $500$ were picked according to the magnitude > $3.29$ cut. $400$ were used for training and $100$ for validation and testing.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/Training_test.png}
+    \caption{Training - Test Split: $400$ Training points are shown in red and $100$ test/validation points are shown in green}
+\end{figure}
 
 \section{Timeseries Earthquake Prediction}
 
@@ -495,20 +524,23 @@ Grouped faults empirically into 36 families by proximity. #Show picture of group
 \TODO{either put plots here or reference where they are}
 
 The models are measured according to two accuracy metrics, the Nash Sutcliffe Efficiency 
-NSE and a visualization of predicted verse observed earthquake data. NSE measures 
+($NSE$) and a visualization of predicted verse observed earthquake data. $NSE$ measures 
 the variation difference between observed and predicted data over time. $Q^t_m$ is the 
-model prediction at time t, $Q^t_o$ is observed value at time t, $\overline{Q_o}$ is the 
-mean observed value over all time. \cite{fox2021earthquake}
+model prediction at time t, $Q^t_o$ is observed value at time $t$, $\overline{Q_o}$ is the 
+mean observed value over all time \cite{fox2021earthquake}.
 
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.75\columnwidth]{images/Equations/NSE_equation.png}
-    \caption{Nash Sutcliffe Efficiency \cite{fox2021earthquake}}
-\end{figure}
+    \begin{equation}
+    NSE = 1 - \dfrac{\sum\limits^{t=T}_{t=1}(Q^t_m-Q^t_o)^2}{\sum\limits^{t=T}_{t=1}(Q^t_o-\overline{Q_o})^2}
+    \label{eq:Nash Sutcliffe Efficiency}
+    \end{equation}
 
 
-The results are presented as the normalized NSE or NNSE. NNSE = 1/(2-NSE)
-The values of NNSE ranges between 0 and 1 with 0 = mean, the higher the value the better the fit. \cite{fox2021earthquake}
+
+
+
+The results are presented as the Normalized Nash Sutcliffe Efficiency ($NNSE$) \cite{fox2021earthquake}
+$NNSE. NNSE = 1/(2-NSE)$
+The values of $NNSE$ ranges between $0$ and $1$ with $0 = mean$, the higher the value the better the fit \cite{fox2021earthquake}.
 
 \section{Benchmarks}
 
@@ -532,7 +564,8 @@ Gregors MNIST benchmark results are summarized in Table~\ref{tab:mnist}.
         Rivanna V100 & 0m43.160s & 0m15.510s & 0m6.894s & 470.82.01 & 11.4 & Tesla V100-SXM2 & & Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz & Q3  2014 \\ \hline
         Rivanna K80 & 0m57.588s & 0m20.322s & 0m9.612s & 470.82.01 & 11.4 & NVIDIA TESLA K80 & & Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz & Q3  2014 \\ \hline
         Rivanna Frontend & 1m11.535s & 1m00.780s & 0m10.352s & N/A & N/A & N/A & & Intel(R) Xeon(R) CPU E5-2630 v3 @ 2.40GHz & Q3  2014 \\ \hline
-        Rob K & 
+        Rob K & \\ \hline
+        Thomas AERO 15 & 0m3.387s & 0m00.000s & 0m0.015s & 511.79 & 11.6 & NVIDIA RTX 2070 & June 1, 2019 & Intel Core i7-8750H @ 2.20GHz & Q2  2018 \\ \hline
     \end{tabular}
     \end{adjustbox}
 \end{table*}
@@ -588,11 +621,10 @@ Center (SDSC) ....
 
 University of Virginia Rivanna
   
-\TODO{Rivanna description is incomplete}
+\TODO{Rivanna description needs review}
 
 UVA, Rivanna, A100, RTX3090, others may not have enough memory.
-\cite{www-rivanna} \TODO{description of Rivanna on web page is not
-  accurate.}
+\cite{www-rivanna} \TODO{Write paragraph describing Rivanna compute cluster}
 
 Containers are available on Rivanna through Singularity
 \cite{www-singularity} that can be loaded with modules
@@ -635,6 +667,31 @@ analytics. It contains 4 NVIDIA A100 GPUs and up to 320 GBs of GPU
 memory. With the use of Multi-Instance GPU (MIG), each A100 GPU can be
 partitioned into 7 isolated instances.
 
+\section{GPU Analysis}
+
+Sample Text about GPU Event Times
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/GPU/event_times.png}
+    \caption{GPU Event Times: Nvidia V100 2 Epoch Experiment on Rivanna localscratch}
+\end{figure}
+
+Sample Text about Epoch Validation Figure
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/GPU/validation.png}
+    \caption{Epoch Validation: Nvidia V100 2 Epoch Experiment on Rivanna localscratch}
+\end{figure}
+
+Sample Text about kWh/Epoch
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/GPU/kWh_per_epoch.png}
+    \caption{Average kWh per Epoch: }
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -669,9 +726,9 @@ partitioned into 7 isolated instances.
          \ref{id:sdsc}  & SDSC   & Expanse & \cite{www-expanse}       &          200 & \nvidia{V100}
          SMX2 & & & &               \\ \hline
          \ref{id:uva}   & UVA    & Rivanna &\cite{www-rivanna}       &            8 & \nvidia{A100}      & 80GB & ? & &  Feb 2022      \\
-            &    &  &       &            8 & \nvidia{A100}      & 40GB & 8 & &       \\
+            &    &  &       &            8 & \nvidia{A100}      & 40GB & 8 & 2 &       \\
             &    &  &       &            ? & \nvidia{RTX3090}   & 24GB & ? & ? & 2021          \\
-            &    &  &       &            ? & \nvidia{K80}       & 11GB & 8 & 9 & 2021          \\
+            &    &  &       &            ? & \nvidia{K80}       & 11GB & 8 & 9 (8?) & 2021          \\
             &    &  &       &            ? & \nvidia{V100}      & 16GB & 4 & 1 & 2021          \\
             &    &  &       &            ? & \nvidia{V100}      & 32GB & 4 & 12 & 2021          \\
             &    &  &       &            ? & \nvidia{P100}      & 12GB & 4 & 3 & 2021          \\
@@ -719,7 +776,7 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
          32 &
          \href{https://www.gigabyte.com/Graphics-Card/GV-N307TGAMING-OC-8GD#kf}{GIGABYTE Gaming RTX 3070TI}  & 
          8GB & 
-         2 &
+         1 &
          1 &
          Sep 2021-Feb 2022   \\
          \hline
@@ -732,13 +789,13 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
          32 &
          \href{https://rog.asus.com/us/graphics-cards/graphics-cards/rog-strix/rog-strix-rtx3090-o24g-gaming-model/}{ASUS ROG Strix RTX 3090} & 
          24GB & 
-         & 
-         & 
+         1 & 
+         1 & 
          Feb 2022   \\
          \hline
-         \ref{sec:tcomputer}   & Thomas.A  & i7-8750H & Win11 Pro  & 1 &   ? & ? & \href{https://www.gigabyte.com/Laptop/AERO-15--RTX-20-Series#kf}{NVIDIA GeForce RTX 2070 with Max-Q Design}  & 16GB & 1 & 1 & 2019   \\
+         \ref{sec:tcomputer}   & Thomas.A  & i7-8750H & Win10 Pro  & 1 &   6 & 12 & \href{https://www.gigabyte.com/Laptop/AERO-15--RTX-20-Series#kf}{NVIDIA GeForce RTX 2070 with Max-Q Design}  & 16GB & 1 & 1 & 2019   \\
          \hline
-         \ref{sec:t2computer}   & Thomas.B  & i7-7700HQ &  Win11 Pro &1 & ? & ? &  NVIDIA GeForce GTX 1060  & 16GB & 1 & 1 & 2017   \\
+         \ref{sec:t2computer}   & Thomas.B  & i7-7700HQ &  Win10 Pro &1 & 4 & 8 &  NVIDIA GeForce GTX 1060  & 16GB & 1 & 1 & 2017   \\
          \hline
          Table \ref{tab:rcompute} & 
          Rob & 
@@ -794,7 +851,7 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
   than 100 developers and has facilitated the construction of
   repeatable, tractable builds for users of these systems.}
 
-\BIOFIG{images/bio/gregor.png}{Jake Kolessar}{is a Graduate Student at
+\BIOFIG{images/bio/jake.jpg}{Jake Kolessar}{is a Graduate Student at
   the University of Virginia's School of Data Science. He has a
   background in mechanical engineering and 2 years of experience as a
   Modeling, Simulation and Analysis Engineer. He has supported the
@@ -827,7 +884,12 @@ Rivanna: \url{https://www.rc.virginia.edu/userinfo/rivanna/overview/}
   academic hybrid cloud, as well as the larges scientific bibliometric
   analysis of XSEDE in the world.}
 
-
+\BIOFIG{images/bio/j-fox.jpg}{Judy Fox} is an Associate Professor of Data  
+  Science and holds a joint appointment as Associate Professor with the
+  Department of Computer Science. Her research focuses on designing
+  experimental systems that enable Data Science, Machine Learning, and  the
+  Internet  of  Things  applications  to  harness  the  computational
+  resources  of  Cloud  and  HPC  platforms  effectively.
 
 \appendix
 
@@ -862,15 +924,6 @@ Things to do:
     \item Frequently check github \cite{www-mlcommons-eathquake}
     \item Read up on TFT \cite{www-onnen2021}
     \item Become familiar with the Attention Paper \cite{vaswani2017attention}
-    \item Learn how to selfdeploy jupyterlab \cite{www-jupyterlab}
-
-    \item Begin to learn about papermill \cite{www-papermill}
-      \TODO{Rivanna's core configurations might be a bit limited on
-        this front.  They do provide multiple versions of software
-        (such as py2.7 and py3.8), but we may need to get permission
-        to do something in userspace if we need to be very specific on
-        a version of python.  Do we want to look into using tox,
-        conda, or leave this up to the container ecosystem to solve?}
 
       \TODO{Gregor: add how to use conda and modules to switch python versions}
     \item virtualenv on rivanna for a particular python version.
